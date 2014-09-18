@@ -6,7 +6,7 @@ gem 'rails', '3.2.19'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-# gem 'cancan'
+gem 'cancan'
 gem 'devise'
 gem 'carrierwave', '0.9.0'
 gem 'kaminari'
@@ -25,7 +25,12 @@ group :assets do
 end
 
 group :production do
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
+  gem 'binding_of_caller'
   gem 'better_errors'
+  gem 'meta_request'
 end
 
 gem 'jquery-rails'
