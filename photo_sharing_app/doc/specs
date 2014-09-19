@@ -1,0 +1,28 @@
+## Photo sharing app
+You will need to create a photo sharing application.
+
+Users will be able to register and create albums and photos. Albums and photos will need to be named and described by their owners; and they will also be able to tag photos, and make tags searchable. Users will be able to view other users albums. They will be able to comment on the photos, and either up vote or down vote them. The homepage will display the most popular photos.
+
+============================
+
+MVP
+
+Allow users to register.
+
+Allow users to create albums and photos.
+
+Allow users to name and describe only their own photos.
+
+Allow users to tag their photos.
+
+Make tags searchable.
+
+Allow users to be able to view other user's albums.
+
+Allow users to comment on any of the photos.
+
+Allow users to rate photos by voting them up or down.
+
+Have the homepage display the most popular photos.
+
+==============================================

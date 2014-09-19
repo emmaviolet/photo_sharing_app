@@ -1,0 +1,93 @@
+notes
+
+User.destroy_all
+
+u1 = User.new
+u1.save(:validate => false)
+u1id = u1.id
+
+a1 = Album.new
+a1.user_id = u1id
+a1.save
+a1id = a1.id
+
+p1 = Photo.new
+p1.album_id = a1id
+p1.save
+
+u1.albums
+a1.photos
+u1.photos
+
+===========================
+
+more gems:
+
+pagination
+bourbon
+rmagick
+
+============================
+  Trello
+============================
+
+MVP
+
+Allow users to register.
+
+Allow users to create albums and photos.
+
+Allow users to name and describe only their own photos.
+
+Allow users to tag their photos.
+
+Make tags searchable.
+
+Allow users to be able to view other user's albums.
+
+Allow users to comment on any of the photos.
+
+Allow users to rate photos by voting them up or down.
+
+Have the homepage display the most popular photos.
+
+==============================================
+
+
+==== planning =====
+
+Plan models and associations.
+
+Plan site wireframes.
+
+Plan gems.
+
+Plan site functionality.
+
+Scaffold basic app to assist in planning ux, check associations and trial using git as a group.
+  oops this is in sqlite and pg is nicer
+
+Plan user journey through site.
+
+Plan division of labour.
+
+Trial run git.
+
+========================
+
+====== construction ========
+
+
+=============================
+
+ransack gem
+
+mvp - search tags
+also - search users, albums, photos
+
+tags belongs to photos so should be simple to add this functionality on photos#index, less so if it is to be included when in the view for a different model.
+
+
+
+
+
