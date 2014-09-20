@@ -19,15 +19,28 @@
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
+
   <div class="field">
     <%= f.label :image %><br />
     <%= f.text_field :image %>
-  </div>
-  <div class="field">
+  </div> 
+    <div class="field">
     <%= f.label :album_id %><br />
     <%= f.number_field :album_id %>
   </div>
+    <div class="field">
+    <%= f.label :photo_file %><br />
+    <%= f.file_field :photo_file %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+
+
+
+
+
