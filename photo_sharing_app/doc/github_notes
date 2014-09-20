@@ -1,0 +1,47 @@
+github_notes
+
+**Don't push alone!!**
+
+====================
+
+Pushing to master:
+
+On your branch, add files and commit them.
+
+Change to branch master using:
+
+    git checkout master
+
+then merge:
+
+    git merge yourbranchname
+
+then pull:
+
+    git pull
+
+then push:
+
+    git push origin master  
+
+========================
+
+Synching your branch and your clone of the master branch with origin master:
+
+In master branch:
+
+    git pull
+
+And your clone of master is up to date!
+
+Then switch to your branch with:
+
+    git checkout yourbranchname
+
+Then:
+
+    git pull
+
+And you are done. Hooray!
+
+=================================
