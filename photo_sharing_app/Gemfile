@@ -12,6 +12,7 @@ gem 'carrierwave', '0.9.0'
 gem 'kaminari'
 gem 'ransack'
 gem 'haml-rails'
+
 #pagination
 #bourbon
 #rmagick?
