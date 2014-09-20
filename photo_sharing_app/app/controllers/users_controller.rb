@@ -1,7 +1,7 @@
-Class UsersController < ApplicationController
+class UsersController < ApplicationController
 
   def index
-  
+
   end
 
   def show
@@ -13,6 +13,7 @@ Class UsersController < ApplicationController
     end
   end
 
+
   def new
 
   end
@@ -22,7 +23,7 @@ Class UsersController < ApplicationController
   end
 
   def update
-  
+
   end
 
 end
