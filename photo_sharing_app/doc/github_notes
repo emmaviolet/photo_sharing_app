@@ -40,7 +40,7 @@ Then switch to your branch with:
 
 Then:
 
-    git pull
+    git merge master
 
 And you are done. Hooray!
 
