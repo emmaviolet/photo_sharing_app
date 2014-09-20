@@ -1,29 +1,29 @@
 class UsersController < ApplicationController
 
-  def index
+  # def index
 
-  end
+  # end
 
-  def show
-    @user = User.find(params[:id])
+  # def show
+  #   @user = User.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html # show.html.erb
+  #     format.json { render json: @user }
+  #   end
+  # end
 
 
-  def new
+  # def new
 
-  end
+  # end
 
-  def edit
+  # def edit
 
-  end
+  # end
 
-  def update
+  # def update
 
-  end
+  # end
 
 end
