@@ -6,8 +6,8 @@ PhotoSharingApp::Application.routes.draw do
   resources :albums
   devise_for :users
   resources :photos
-
-  get '/user_page/:id', to: 'users#show'
+  resources :users, only: [:show, :edit, :update]
+  
   root to: "photos#index"
   
 end

@@ -1,0 +1,23 @@
+%div.notification{:style=>"display:none;"}
+%h1#user_email=@user.email
+%button#usereditinfobutton Edit Info
+
+%div#usereditinfo{:style=>"display:none;"}
+  %input#user_id{:value => @user.id, :type => "hidden"}/
+  %p Email:
+  %input#email{:placeholder => @user.email, :type => "text"}/
+  %p Password:
+  %input#password{:placeholder => "**********", :type => "password"}/
+  %p Password confirmation:
+  %input#passwordconfirmation{:placeholder => "**********", :type => "password"}/
+  %br
+  %input#usereditsubmit{:type => "button", :value => "Submit"}/
+
+%h2 Albums:
+%p- show all albums, with photo and name
+%p- link to add new album
+
+:javascript
+  $(function(){
+    setup();
+  });

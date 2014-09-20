@@ -1,29 +1,30 @@
 class UsersController < ApplicationController
 
-  # def index
+  def show
+    @user = User.find(params[:id])
 
-  # end
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @user }
+    end
+  end
 
-  # def show
-  #   @user = User.find(params[:id])
+  def edit
 
-  #   respond_to do |format|
-  #     format.html # show.html.erb
-  #     format.json { render json: @user }
-  #   end
-  # end
+  end
 
+  def update
+    @user = User.find(params[:id])
 
-  # def new
-
-  # end
-
-  # def edit
-
-  # end
-
-  # def update
-
-  # end
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "show" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
 end
