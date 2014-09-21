@@ -27,3 +27,15 @@ footer - username's photo, album name
 
 =======================
 
+Going to make the comments bit first since that seems like the most fun part.
+
+Need to:
+
+  add a form for adding a comment using rails
+
+  add the show comments part.
+
+  then hide the form and make it appear with javascript.
+
+
+
