@@ -1,4 +1,4 @@
-pseudocode
+psuedocode photoshow
 
 **pseudocode everything**
 
@@ -38,8 +38,11 @@ Need to:
       give the form a value for the current_user, alter create comment in user model? 
 
   add the show comments part, with edit and delete buttons only visible to one's own comments.
-    need to reroute them in the controller
+
+    need to reroute them in the controller - DONE
 
   then hide the form and make it appear with javascript.
+
+  then use ajax to handle the form request.
 
 =========================
