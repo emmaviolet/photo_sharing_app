@@ -1,1 +1,37 @@
 pseudocode
+
+photo#show
+
+====================
+
+change to haml
+
+=====================
+
+-photo name
+
+-image
+
+-tag
+
+-upvote, downvote
+
+-edit and delete buttons visible to user that owns the photo only
+
+-write comment option, drops down a box to fill in
+
+- show commments
+
+
+footer - username's photo, album name (?)
+
+=======================
+
+Need to: Allow users to make comments, rails
+
+  Form to make a comment using rails helpers
+
+Need to: Allow users to read comments
+  
+  rails helpers to show comments
+
