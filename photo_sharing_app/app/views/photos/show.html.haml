@@ -17,16 +17,18 @@
   %div
     = form_for @photo do |f|
       = f.fields_for :comments do |coms_builder|
-        %fieldset.input
-          = coms_builder.label :text, 'Add a Comment'
-          = coms_builder.text_field :text
-        %fieldset.button
-          = f.submit "Submit"
+        - if coms_builder.object.new_record?
+          %fieldset.input 
+            = coms_builder.label :text, 'Add a Comment'
+            = coms_builder.text_field :text
+          %fieldset.button
+            = f.submit "Submit"
   %div
     %p Comments:
     - @photo.comments.each do |comment|
       %p= comment.text
     /not sure why @photo.comments returns an array, please to be finding out.
+    /need to be able to edit and delete comments - only if it is yours.
 
 %footer
   /photo uploaded by link_to username
