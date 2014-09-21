@@ -5,5 +5,5 @@ class Photo < ActiveRecord::Base
   has_many :comments
   has_many :tags
   belongs_to :album
-  accepts_nested_attributes_for :comments
+  accepts_nested_attributes_for :comments, :reject_if => proc { |attributes| attributes['text'].blank? }
 end
