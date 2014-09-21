@@ -31,9 +31,9 @@ Going to make the comments bit first since that seems like the most fun part.
 
 Need to:
 
-  add a form for adding a comment using rails
+  add a form for adding a comment using rails -DONE
 
-  add the show comments part.
+  add the show comments part, with edit and delete buttons only visible to one's own comments.
 
   then hide the form and make it appear with javascript.
 
