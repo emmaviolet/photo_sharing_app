@@ -30,7 +30,16 @@
       - if comment.text 
         %p= comment.text
         // if current_user.id == comment.user_id
-        //edit
+        %div
+          = form_for @photo do |f|
+            = f.fields_for :comments do |coms_builder|
+              - if coms_builder.object == comment
+                %fieldset.input 
+                  = coms_builder.label :text, 'Edit'
+                  = coms_builder.text_field :text
+                %fieldset.button
+                  = f.submit "Submit"
+
         = link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }
         //reroute destroy path in controller
 
