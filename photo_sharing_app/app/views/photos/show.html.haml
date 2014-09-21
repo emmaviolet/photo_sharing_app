@@ -12,15 +12,21 @@
     - #if current user = the owner of this photo
     = link_to 'Edit', edit_photo_path(@photo)
     = link_to 'Back', photos_path
-    - #end
-  %div
 
 %section
   %div
-    /add a comment option
+    = form_for @photo do |f|
+      = f.fields_for :comments do |coms_builder|
+        %fieldset.input
+          = coms_builder.label :text, 'Add a Comment'
+          = coms_builder.text_field :text
+        %fieldset.button
+          = f.submit "Submit"
   %div
+    %p Comments:
     - @photo.comments.each do |comment|
-      = comment.text
+      %p= comment.text
+    /not sure why @photo.comments returns an array, please to be finding out.
 
 %footer
   /photo uploaded by link_to username
