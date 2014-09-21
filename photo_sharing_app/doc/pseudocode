@@ -1,5 +1,7 @@
 pseudocode
 
+**pseudocode everything**
+
 photo#show
 
 ====================
@@ -32,8 +34,11 @@ Going to make the comments bit first since that seems like the most fun part.
 Need to:
 
   add a form for adding a comment using rails -DONE
+    actually, not quite - the comments are not getting a user_id
+      give the form a value for the current_user, alter create comment in user model? 
 
   add the show comments part, with edit and delete buttons only visible to one's own comments.
+    need to reroute them in the controller
 
   then hide the form and make it appear with javascript.
 

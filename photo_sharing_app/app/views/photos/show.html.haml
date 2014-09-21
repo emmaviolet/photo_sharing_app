@@ -27,12 +27,15 @@
   %div
     %p Comments:
     - @photo.comments.each do |comment|
-      - if comment.text
+      - if comment.text 
         %p= comment.text
+        // if current_user.id == comment.user_id
+        //edit
         = link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }
-    /why is there an extra destroy button?
+        //reroute destroy path in controller
+
+    /why is there an extra destroy button? Never mind, got rid of it - still curious though.
     /not sure why @photo.comments returns an array, please to be finding out.
-    /need to be able to edit and delete comments - only if it is yours.
 
 %footer
   /photo uploaded by link_to username
