@@ -23,15 +23,7 @@ change to haml
 - show commments
 
 
-footer - username's photo, album name (?)
+footer - username's photo, album name
 
 =======================
-
-Need to: Allow users to make comments, rails
-
-  Form to make a comment using rails helpers
-
-Need to: Allow users to read comments
-  
-  rails helpers to show comments
 

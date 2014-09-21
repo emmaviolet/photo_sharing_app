@@ -1,12 +1,31 @@
 %p#notice
-  notice#{notice}
-%div
-  = link_to image_tag(@photo.photo_file.thumb.url), @photo.photo_file.detail.url
-%div
-  = @photo.name
-%div
-  = @photo.description
-%div
-  = #access the tag for the image
-= link_to 'Edit', edit_photo_path(@photo)
-= link_to 'Back', photos_path
+  show notice#{notice}
+
+%section
+  %div
+    = link_to image_tag(@photo.photo_file.thumb.url), @photo.photo_file.detail.url
+  %div
+    = @photo.name
+    = #access the tags for the image
+  %div
+    = @photo.try :description
+  %div
+    = #upvote, downvote 
+  %div
+    - #if current user = the owner of this photo
+    = link_to 'Edit', edit_photo_path(@photo)
+    = link_to 'Back', photos_path
+    - #end
+  %div
+
+%section
+  %div
+    /add a comment option
+  %div
+    /show comments
+
+%footer
+  /photo uploaded by link_to username
+  /album: link_to album, album.name
+
+    
