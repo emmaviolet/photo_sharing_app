@@ -1,4 +1,4 @@
-%div.notification{:style=>"display:none;"} User info successfully updated
+
 %h1#user_username=@user.username
 %button#usereditinfobutton Edit Info
 
@@ -15,14 +15,15 @@
   %br
   %input#usereditsubmit{:type => "button", :value => "Submit"}/
 
-%h2 Albums:
+%h2 Albums
 
 -unless @user.albums.empty?
   -@user.albums.each do |album|
     =album.cover_photo
     =album.name
 -else
-  You have no albums!
+  %div.newalbum You have no albums!
+%div.newalbum
 %br
 %button#newalbumbutton New Album
 

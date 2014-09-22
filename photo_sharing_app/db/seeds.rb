@@ -46,3 +46,8 @@ tag_texts = ["funny", "cats", "dogs", "lazy", "sunny", "yolo"]
   t = Tag.create text: "#{tag_texts.sample}", photo_id: "#{Photo.all.sample.id}"
   t.save
 end
+
+# default photo
+
+p = Photo.create name: "default_album_cover_image", image: "http://cdn3.itzgeek.com/wp-content/themes/daily/images/default-thumb.gif"
+p.save
