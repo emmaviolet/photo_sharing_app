@@ -1,30 +1,16 @@
-<h1>Listing photos</h1>
+<h1>Most popular photos</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Image</th>
-    <th>Album</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @photos.each do |photo| %>
-  <tr>
-    <td><%= photo.name %></td>
-    <td><%= photo.description %></td>
-    <td><%= photo.image %></td>
-    <td><%= photo.album_id %></td>
-    <!-- <td><%= photo.album_id %></td> -->
-    <td><%= link_to 'Show', photo %></td>
-    <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
-    <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<% sorted_photos = @photos.sort_by { |p| p.ratings.sum(:value) }.reverse %>
+<% sorted_photos[0..2].each do |photo| %> 
+  <%= link_to photo.name, photo %>
+  <%= photo.image %>
+  <% album_id = photo.album_id %>
+  <% album = Album.find(album_id) %>
+  <% user_id = album.user_id %>
+  <% user = User.find(user_id) %>
+  <%= link_to user.email, user %>
+  <%= link_to album.name, album %>
+  <%= link_to 'Edit', edit_photo_path(photo) %>
+  <%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <br>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Photo', new_photo_path %>
