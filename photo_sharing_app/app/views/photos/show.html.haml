@@ -2,20 +2,22 @@
   %div
     = link_to image_tag(@photo.photo_file.thumb.url), @photo.photo_file.detail.url
   %div
-    = @photo.name
+    %p
+      name:
+      = @photo.name
     %p 
       tags:
       - @photo.tags.each do |tag|
         = tag.text
   %div
-    = @photo.try :description
+    %p
+      description:
+      = @photo.try :description
   %div
     = #upvote, downvote 
   %div
-    - #if current user = the owner of this photo
+    / - if current_user.id == album.user_id
     = link_to 'Edit', edit_photo_path(@photo)
-    /this needs to link back to the album:
-    = link_to 'Back', photos_path
 
 %section
   %div
@@ -30,7 +32,7 @@
     - @photo.comments.each do |comment|
       - if comment.text 
         %p= comment.text
-
+        / - if current_user.id == @photo.album.user_id
         = form_for comment, url: photo_comment_path(@photo, comment) do |f|
           %fieldset.input 
             = f.label :text, 'Edit Comment'
