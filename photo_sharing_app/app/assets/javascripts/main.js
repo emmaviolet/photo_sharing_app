@@ -1,6 +1,8 @@
 function setup() {
   $('#usereditinfobutton').click(showUserEdit);
+  $('#newalbumbutton').click(showNewAlbumInfo);
   $('#usereditsubmit').click(submitUserInfo);
+  $('#new_album_submit').click(submitAlbumInfo);
 }
 
 function showUserEdit() {
@@ -15,6 +17,7 @@ function showUserEdit() {
 
 function submitUserInfo() {
   var userEmail = $('#email').val();
+  var userUsername = $('#username').val();
   var userPassword = $('#password').val();
   var userPasswordConfirmation = $('#passwordconfirmation').val();
   var userId = $('#user_id').val();
@@ -22,12 +25,38 @@ function submitUserInfo() {
   $.ajax({
     url: "/users/"+userId+".json",
     type: 'PUT',
-    data: { user: {email: userEmail, password: userPassword, password_confirmation: userPasswordConfirmation } },
-    success: submitSuccess(userEmail)
+    data: { user: {email: userEmail, username: userUsername, password: userPassword, password_confirmation: userPasswordConfirmation } },
+    success: submitSuccess(userUsername)
   });
 }
 
-function submitSuccess(userEmail) {
+function submitSuccess(userUsername) {
   showUserEdit();
-  $("#user_email").html(userEmail);
+  $("#user_username").html(userUsername);
+  $(".notification").slideDown("fast").delay(5000).slideUp("fast");
 }
+
+function showNewAlbumInfo() {
+  var showType = document.getElementById('newalbuminfo').style.display;
+  if(showType === 'none'){
+    $('#newalbuminfo').slideDown().css("display","block");
+  } else {
+    $('#newalbuminfo').slideUp();
+    setTimeout(function(){document.getElementById('newalbuminfo').style.display = "none"}, 1000);
+  };
+}
+
+function submitAlbumInfo() {
+  var albumName = $('#album_name').val();
+  var albumDescription = $('#album_description').val();
+  var userId = $('#user_id').val();
+
+  $.ajax({
+    url: "/albums",
+    type: 'POST',
+    data: { album: {name: albumName, description: albumDescription, user_id: userId } }
+  });
+}
+
+
+
