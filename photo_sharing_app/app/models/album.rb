@@ -10,6 +10,4 @@ class Album < ActiveRecord::Base
     self.cover_photo ||= Photo.find_by_name("default_album_cover_image").id
   end
 
-
-
 end
