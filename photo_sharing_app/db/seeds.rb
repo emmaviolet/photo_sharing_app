@@ -8,7 +8,7 @@ Comment.delete_all
 names = ["Emma", "Shehryar", "Hisako", "Francesco", "Stef", "Luke", "Lee", "Akunor", "Abdul", "Anand", "Colin", "Habib", "Kate", "Laurence", "Michael", "Jarkyn", "Alex"]
 
 names.each do |name|
-  u = User.create email: "#{name.downcase}@wdi.io", password: "password", password_confirmation: "password"
+  u = User.create email: "#{name.downcase}@wdi.io", password: "password", username: "#{name}", password_confirmation: "password"
   u.save(:validate => false)
 end
 

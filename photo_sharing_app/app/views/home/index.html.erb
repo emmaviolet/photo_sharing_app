@@ -1,9 +1,9 @@
 <div id = "index">
   <% if @users != [] %>
     <h1>USERS</h1> <br>
-    <% @users.sort_by! {|u| u.email } %>
+    <% @users.sort_by! {|u| u.username } %>
     <% @users.each do |user| %>
-      <%= user.email %>
+      <%= link_to user.username, user %>
     <% end %>
   <% end %>
 
@@ -11,7 +11,9 @@
     <h1>ALBUMS</h1> <br>
     <% @albums.sort_by! {|a| a.name } %>
     <% @albums.each do |album| %>
-      <%= album.name %>
+      <%= link_to album.name, album %>
+      <%= link_to image_tag(album.cover_photo), album %>
+      <br>
     <% end %>
   <% end %>
 
@@ -28,7 +30,9 @@
 
     <% searched_photos.sort_by! {|p| p.name } %>
     <% searched_photos.each do |photo| %>
-      <%= photo.name %>
+      <%= link_to photo.name, photo %>
+      <%= link_to image_tag(photo.image), photo %>
+      <br>
     <% end %>
   <% end %>
 
