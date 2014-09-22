@@ -72,7 +72,12 @@ header {
   box-shadow: $light-shadow;
 }
 
-.main {
+.main_top {
   border-top: $light-border;
   margin-bottom: 40px;
+}
+
+.main_container {
+  max-width: 960px;
+  margin: 0 auto;
 }
