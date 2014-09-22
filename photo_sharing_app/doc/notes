@@ -74,20 +74,3 @@ Plan division of labour.
 Trial run git.
 
 ========================
-
-====== construction ========
-
-
-=============================
-
-ransack gem
-
-mvp - search tags
-also - search users, albums, photos
-
-tags belongs to photos so should be simple to add this functionality on photos#index, less so if it is to be included when in the view for a different model.
-
-
-
-
-
