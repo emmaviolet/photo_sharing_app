@@ -6,4 +6,11 @@ class Album < ActiveRecord::Base
   belongs_to :user
 
   belongs_to :cover_photo, class_name: "Photo"
+
+  before_validation :set_default_params, :on => :create
+
+  def set_default_params
+    self.cover_photo_id ||= Photo.find_by_name("default_album_cover_image").id
+  end
+
 end
