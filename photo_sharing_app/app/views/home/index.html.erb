@@ -12,7 +12,8 @@
     <% @albums.sort_by! {|a| a.name } %>
     <% @albums.each do |album| %>
       <%= link_to album.name, album %>
-      <%= link_to image_tag(album.cover_photo), album %>
+      <% cover_photo_url = Photo.find(album.cover_photo_id).photo_file.url %>
+      <%= link_to image_tag(cover_photo_url), album %>
       <br>
     <% end %>
   <% end %>
@@ -31,7 +32,7 @@
     <% searched_photos.sort_by! {|p| p.name } %>
     <% searched_photos.each do |photo| %>
       <%= link_to photo.name, photo %>
-      <%= link_to image_tag(photo.image), photo %>
+      <%= link_to image_tag(photo.photo_file.url), photo %>
       <br>
     <% end %>
   <% end %>
