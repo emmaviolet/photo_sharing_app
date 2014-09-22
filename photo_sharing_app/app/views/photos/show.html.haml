@@ -28,6 +28,13 @@
       - if comment.text 
         %p= comment.text
 
+        = form_for comment, url: photo_comment_path(@photo, comment), :method => :put do |f|
+          %fieldset.input 
+            = f.label :text, 'Edit Comment'
+            = f.text_field :text, :value => comment.text
+          %fieldset.button
+            = f.submit "Submit"
+
         = link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }
 
 %footer

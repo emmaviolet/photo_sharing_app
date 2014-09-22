@@ -28,7 +28,6 @@ class CommentsController < ApplicationController
   # GET /comments/new.json
   def new
     @photo = Photo.find(params[:photo_id])
-    # @comment = Comment.new
     @comment = @photo.comments.build
     @comment.user = current_user
 
@@ -40,19 +39,16 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
-    @comment = Comment.find(params[:id])
-    @comment.user = current_user
+   @photo = Photo.find(params[:photo_id])
+   @comment = @photo.comments.build
+   @comment.user = current_user
   end
 
   # POST /comments
   # POST /comments.json
   def create
-    # @comment = Comment.new(params[:comment])
-    # @comment.user = current_user
-
     @photo = Photo.find(params[:photo_id])
     @comment = @photo.comments.build(params[:comment])
-    # @comment = Comment.new(params[:comment])
     @comment.user = current_user
 
     respond_to do |format|
@@ -69,12 +65,13 @@ class CommentsController < ApplicationController
   # PUT /comments/1
   # PUT /comments/1.json
   def update
-    @comment = Comment.find(params[:id])
+    @photo = Photo.find(params[:photo_id])
+    @comment = @photo.comments.find(params[:id])
     @comment.user = current_user
 
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Comment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

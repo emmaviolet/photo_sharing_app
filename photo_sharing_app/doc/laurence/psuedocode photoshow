@@ -36,6 +36,7 @@ Need to:
   add a form for adding a comment using rails -DONE
     actually, not quite - the comments are not getting a user_id
       give the form a value for the current_user, alter create comment in user model? 
+      -DONE
 
   add the show comments part, with edit and delete buttons only visible to one's own comments.
 
@@ -65,5 +66,7 @@ or preferably reroute the create and edit urls
       new_photo_comment_path(@photo)
 
   @photo = photoparamsfindphotoid in controller
+
+  =========================================
 
 
