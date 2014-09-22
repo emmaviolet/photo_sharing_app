@@ -16,34 +16,19 @@
 
 %section
   %div
-    = form_for @photo do |f|
-      = f.fields_for :comments do |coms_builder|
-        - if coms_builder.object.new_record?
-          %fieldset.input 
-            = coms_builder.label :text, 'Add a Comment'
-            = coms_builder.text_field :text
-          %fieldset.button
-            = f.submit "Submit"
+    = form_for @photo.comments.build do |f|
+      %fieldset.input 
+        = f.label :text, 'Add a Comment'
+        = f.text_field :text
+      %fieldset.button
+        = f.submit "Submit"
   %div
     %p Comments:
     - @photo.comments.each do |comment|
       - if comment.text 
         %p= comment.text
-        // if current_user.id == comment.user_id
-        %div
-          = form_for @photo do |f|
-            = f.fields_for :comments do |coms_builder|
-              - if coms_builder.object == comment
-                %fieldset.input 
-                  = coms_builder.label :text, 'Edit'
-                  = coms_builder.text_field :text
-                %fieldset.button
-                  = f.submit "Submit"
 
         = link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }
-
-    /why is there an extra destroy button? Never mind, got rid of it - still curious though.
-    /not sure why @photo.comments returns an array, please to be finding out.
 
 %footer
   /photo uploaded by link_to username

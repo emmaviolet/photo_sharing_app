@@ -17,8 +17,6 @@ class PhotosController < ApplicationController
   # GET /photos/1.json
   def show
     @photo = Photo.find(params[:id])
-    # @comment.user = current_user
-    @comment = @photo.comments.build
 
     respond_to do |format|
       format.html # show.html.erb
