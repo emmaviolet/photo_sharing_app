@@ -3,7 +3,10 @@
     = link_to image_tag(@photo.photo_file.thumb.url), @photo.photo_file.detail.url
   %div
     = @photo.name
-    = #access the tags for the image
+    %p 
+      tags:
+      - @photo.tags.each do |tag|
+        = tag.text
   %div
     = @photo.try :description
   %div
@@ -28,7 +31,7 @@
       - if comment.text 
         %p= comment.text
 
-        = form_for comment, url: photo_comment_path(@photo, comment), :method => :put do |f|
+        = form_for comment, url: photo_comment_path(@photo, comment) do |f|
           %fieldset.input 
             = f.label :text, 'Edit Comment'
             = f.text_field :text, :value => comment.text
