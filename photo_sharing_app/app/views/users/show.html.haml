@@ -1,15 +1,17 @@
 %div.notification{:style=>"display:none;"} User info successfully updated
-%h1#user_email=@user.email
+%h1#user_username=@user.username
 %button#usereditinfobutton Edit Info
 
 %div#usereditinfo{:style=>"display:none;"}
   %input#user_id{:value => @user.id, :type => "hidden"}/
   %p Email:
-  %input#email{:placeholder => @user.email, :type => "text"}/
+  %input#email{:value => @user.email, :type => "text"}/
+  %p Username:
+  %input#username{:value => @user.username, :type => "text"}/
   %p Password:
-  %input#password{:placeholder => "**********", :type => "password"}/
+  %input#password{:value => @user.password, :type => "password"}/
   %p Password confirmation:
-  %input#passwordconfirmation{:placeholder => "**********", :type => "password"}/
+  %input#passwordconfirmation{:value => @user.password_confirmation, :type => "password"}/
   %br
   %input#usereditsubmit{:type => "button", :value => "Submit"}/
 

@@ -1,0 +1,72 @@
+psuedocode photoshow
+
+**pseudocode everything**
+
+photo#show
+
+====================
+
+change to haml
+
+=====================
+
+-photo name
+
+-image
+
+-tag
+
+-upvote, downvote
+
+-edit and delete buttons visible to user that owns the photo only
+
+-write comment option, drops down a box to fill in
+
+- show commments
+
+
+footer - username's photo, album name
+
+=======================
+
+Going to make the comments bit first since that seems like the most fun part.
+
+Need to:
+
+  add a form for adding a comment using rails -DONE
+    actually, not quite - the comments are not getting a user_id
+      give the form a value for the current_user, alter create comment in user model? 
+      -DONE
+
+  add the show comments part, with edit and delete buttons only visible to one's own comments.
+
+    need to reroute them in the controller - DONE
+
+  then hide the form and make it appear with javascript.
+
+  then use ajax to handle the form request.
+
+=========================
+
+now we have the user_id for the comment, we need to give photo_id to the comment:
+either use
+hiddenfield-params[:comment][:photo_id]
+
+or preferably reroute the create and edit urls
+/photos/:photoid/comments/new 
+  params[:photo_id]
+
+  post to the above url - need to change the routes - look up nested routes
+  would look something like:
+    resources :photos do
+      resources :comments only[:create,:new]
+    end
+
+    the path would no longer be new_comments_path for creating a comment, but 
+      new_photo_comment_path(@photo)
+
+  @photo = photoparamsfindphotoid in controller
+
+  =========================================
+
+

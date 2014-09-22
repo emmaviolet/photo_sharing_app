@@ -17,6 +17,7 @@ function showUserEdit() {
 
 function submitUserInfo() {
   var userEmail = $('#email').val();
+  var userUsername = $('#username').val();
   var userPassword = $('#password').val();
   var userPasswordConfirmation = $('#passwordconfirmation').val();
   var userId = $('#user_id').val();
@@ -24,14 +25,14 @@ function submitUserInfo() {
   $.ajax({
     url: "/users/"+userId+".json",
     type: 'PUT',
-    data: { user: {email: userEmail, password: userPassword, password_confirmation: userPasswordConfirmation } },
-    success: submitSuccess(userEmail)
+    data: { user: {email: userEmail, username: userUsername, password: userPassword, password_confirmation: userPasswordConfirmation } },
+    success: submitSuccess(userUsername)
   });
 }
 
-function submitSuccess(userEmail) {
+function submitSuccess(userUsername) {
   showUserEdit();
-  $("#user_email").html(userEmail);
+  $("#user_username").html(userUsername);
   $(".notification").slideDown("fast").delay(5000).slideUp("fast");
 }
 
