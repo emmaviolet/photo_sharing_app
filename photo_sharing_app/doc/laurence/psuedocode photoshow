@@ -69,4 +69,11 @@ or preferably reroute the create and edit urls
 
   =========================================
 
+to make it so photo owner and comment owner are the only ones who can see the edit buttons:
+
+need to access the user id of the album from the photo show page.
+
+photo belongs to user through albums.
+
+==================================================
 

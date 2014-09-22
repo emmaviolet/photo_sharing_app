@@ -1,0 +1,83 @@
+body {
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  font-family: $varela;
+  color: $gray-font;
+  background-color: $light-bg;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  background-color: $light-bg;
+  height: 180px;
+  nav {
+    height: 50px;
+    padding: 1px 0px 0px 0px;
+    background-color: $gray-nav;
+    ul {
+      li {
+        list-style-type: none;
+        display: inline-block;
+        padding: 0px 8px 0px 8px;
+        font-size: 15px;
+        font-weight: bold;
+      }
+      .login {
+        display: inline-block;
+        float: right;
+        margin-right: 40px;
+        margin-bottom: 550px;
+        li {
+          a {
+            color: $light-font;
+            display: block;
+            padding: 0px 8px 0px 8px;
+            font-size: 15px;
+            font-weight: bold;
+          }
+        }
+      }
+    } 
+  }
+  h1 {
+    display: inline-block;
+    color: $red-heading;
+    font-size: 48px;
+    margin-left: 110px;
+  }
+  div {
+    display: inline-block;
+    float: right;
+    margin-right: 40px;
+    .notice, .alert {
+      max-width: 600px;
+      margin-top: 52px;
+      font-size: 22px;
+      color: $notice;
+      text-align: right;
+    }
+    .alert {
+      color: $error;
+    }
+  }
+}
+
+.strip {
+  height: 16px;
+  background-color: $orange;
+  border-top: $red-border;
+  box-shadow: $light-shadow;
+}
+
+.main_top {
+  border-top: $light-border;
+  margin-bottom: 40px;
+}
+
+.main_container {
+  max-width: 960px;
+  margin: 0 auto;
+}
