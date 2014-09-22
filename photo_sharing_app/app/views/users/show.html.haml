@@ -20,7 +20,8 @@
 %div#useralbums
   -unless @user.albums.empty?
     -@user.albums.each do |album|
-      =album.cover_photo
+      -cover_photo = Photo.find(album.cover_photo_id)
+      =image_tag cover_photo.photo_file.url
       =album.name
   -else
     You have no albums!
