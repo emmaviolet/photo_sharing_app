@@ -1,20 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>User:</b>
-  <%= @album.user_id %>
-</p>
+
 
 <p>
   <b>Name:</b>
   <%= @album.name %>
 </p>
-
+ 
+ <!-- to be able to see all the photos of this album and be able to click on them-->
+ <p><b>Photo:</b>
+ <%= image_tag @photo.photo_file.url %>
+ </p>
 <p>
   <b>Cover photo:</b>
   <%= @album.cover_photo %>
-</p>
-
+</p> 
+  
 <p>
   <b>Description:</b>
   <%= @album.description %>
