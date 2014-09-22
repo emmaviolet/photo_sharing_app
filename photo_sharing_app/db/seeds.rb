@@ -21,9 +21,18 @@ end
 
 photo_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
+photo_images = ["http://3.bp.blogspot.com/_rvHbl_Xm8kk/TURQ_LiMzgI/AAAAAAAABjA/zTS6t0LJYds/s1600/eiffel%2Btower.jpg", "http://i.telegraph.co.uk/multimedia/archive/02524/maldives_2524920b.jpg", "http://kyoto-brand.com/column-img/101207/101207_2005_11kiyomizudera.jpg"]
+
 100.times do |n|
-  p = Photo.create name: "#{photo_names.sample}", album_id: "#{Album.all.sample.id}"
+  p = Photo.create name: "#{photo_names.sample}", album_id: "#{Album.all.sample.id}", remote_photo_file_url: "#{photo_images.sample}"
   p.save
+end
+
+Album.all.each do |a|
+  unless a.photos.empty?
+    a.cover_photo = a.photos.sample
+    a.save
+  end
 end
 
 rating_values = [1, -1]
