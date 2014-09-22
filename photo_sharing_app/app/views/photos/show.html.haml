@@ -16,7 +16,7 @@
 
 %section
   %div
-    = form_for @photo.comments.build do |f|
+    = form_for @photo.comments.build, url: photo_comments_path(@photo) do |f|
       %fieldset.input 
         = f.label :text, 'Add a Comment'
         = f.text_field :text

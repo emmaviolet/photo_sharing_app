@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  # before_filter Photo: :load_photo
+
   # GET /comments
   # GET /comments.json
   def index
@@ -25,7 +27,9 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.json
   def new
-    @comment = Comment.new
+    @photo = Photo.find(params[:photo_id])
+    # @comment = Comment.new
+    @comment = @photo.comments.build
     @comment.user = current_user
 
     respond_to do |format|
@@ -43,12 +47,17 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(params[:comment])
+    # @comment = Comment.new(params[:comment])
+    # @comment.user = current_user
+
+    @photo = Photo.find(params[:photo_id])
+    @comment = @photo.comments.build(params[:comment])
+    # @comment = Comment.new(params[:comment])
     @comment.user = current_user
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to :back, notice: 'Comment was successfully created.' }
         format.json { render json: @comment, status: :created, location: @comment }
       else
         format.html { redirect_to :back }

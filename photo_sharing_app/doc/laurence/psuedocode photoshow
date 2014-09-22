@@ -50,6 +50,7 @@ Need to:
 now we have the user_id for the comment, we need to give photo_id to the comment:
 either use
 hiddenfield-params[:comment][:photo_id]
+
 or preferably reroute the create and edit urls
 /photos/:photoid/comments/new 
   params[:photo_id]
