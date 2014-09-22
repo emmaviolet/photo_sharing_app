@@ -83,4 +83,8 @@ class PhotosController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # def load_photo
+  #   @photo = Photo.find(params[:id])
+  # end
 end
