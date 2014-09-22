@@ -8,6 +8,7 @@ PhotoSharingApp::Application.routes.draw do
   resources :photos
   resources :users, only: [:show, :edit, :update]
   
+  get '/search', to: 'home#index'
   root to: "photos#index"
   
 end

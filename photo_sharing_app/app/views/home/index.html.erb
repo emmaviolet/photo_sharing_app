@@ -1,0 +1,38 @@
+<div id = "index">
+  <% if @users != [] %>
+    <h1>USERS</h1> <br>
+    <% @users.sort_by! {|u| u.email } %>
+    <% @users.each do |user| %>
+      <%= user.email %>
+    <% end %>
+  <% end %>
+
+  <% if @albums != [] %>
+    <h1>ALBUMS</h1> <br>
+    <% @albums.sort_by! {|a| a.name } %>
+    <% @albums.each do |album| %>
+      <%= album.name %>
+    <% end %>
+  <% end %>
+
+  <% if @tags != [] || @photos != [] %>
+    <h1>PHOTOS</h1> <br>
+    <% tagged_photos = [] %>
+    <% @tags.each do |t| %>
+      <% photo_id = t.photo_id %>
+      <% p = Photo.find(photo_id) %>
+      <% tagged_photos << p %>
+    <% end %>
+
+    <% searched_photos = @photos + tagged_photos %>
+
+    <% searched_photos.sort_by! {|p| p.name } %>
+    <% searched_photos.each do |photo| %>
+      <%= photo.name %>
+    <% end %>
+  <% end %>
+
+<% if @tags == [] && @photos == [] && @albums == [] && @users == [] %>
+  Sorry, we don't have any records that match your search query.
+<% end %>
+</div>
