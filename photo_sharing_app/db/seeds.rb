@@ -58,5 +58,5 @@ end
 
 # default photo
 
-p = Photo.create name: "default_album_cover_image", image: "http://cdn3.itzgeek.com/wp-content/themes/daily/images/default-thumb.gif"
-p.save
+p = Photo.create name: "default_album_cover_image", remote_photo_file_url: "http://cdn3.itzgeek.com/wp-content/themes/daily/images/default-thumb.gif"
+p.save(:validate => false)
