@@ -16,7 +16,7 @@
   %div
     %p
       Photo rating:
-      = pluralize @photo.reputation_for(:votes).to_i, ""
+      = @photo.reputation_for(:votes).to_i
     %p
       = link_to "vote up", vote_photo_path(@photo, type: "up"), method: "post"
       |

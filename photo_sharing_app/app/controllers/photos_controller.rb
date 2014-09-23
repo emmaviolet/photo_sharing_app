@@ -7,7 +7,7 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all
+    @photos = Photo.find_with_reputation(:votes, :all, order: 'votes desc')
 
     respond_to do |format|
       format.html # index.html.erb
