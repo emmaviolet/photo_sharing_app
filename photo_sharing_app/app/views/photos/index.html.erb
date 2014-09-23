@@ -2,11 +2,11 @@
 
 <% default_photo = Photo.find_by_name("default_album_cover_image") %>
 <% @photos -= [default_photo] %>
-<% sorted_photos = @photos.sort_by { |p| p.ratings.sum(:value) }.reverse %>
 
-<% sorted_photos[0..2].each do |photo| %> 
+<% @photos.each do |photo| %> 
+
   <%= link_to photo.name, photo %>
-  <%= photo.image %>
+  <%= image_tag(photo.photo_file.detail.url) %>
   <% album_id = photo.album_id %>
   <% album = Album.find(album_id) %>
   <% user_id = album.user_id %>

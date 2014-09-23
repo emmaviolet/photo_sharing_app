@@ -1,26 +1,38 @@
 %section
   %div
+    %h2 Thumb
     = link_to image_tag(@photo.photo_file.thumb.url), @photo.photo_file.detail.url
+    %h2 Detail
+    = link_to image_tag(@photo.photo_file.detail.url), @photo.photo_file.detail.url
   %div
     %p
-      name:
+      %b Name:
       = @photo.name
+    %p
+      %b Album:
+      = link_to @photo.album.name, album_path(@photo.album)
     %p 
-      tags:
+      %b Tags:
       - @photo.tags.each do |tag|
         = tag.text
   %div
     %p
-      description:
+      %b Description:
       = @photo.try :description
   %div
-    = #upvote, downvote 
+    %p
+      Photo rating:
+      = @photo.reputation_for(:votes).to_i
+    %p
+      = link_to "vote up", vote_photo_path(@photo, type: "up"), method: "post"
+      |
+      = link_to "vote down", vote_photo_path(@photo, type: "down"), method: "post"
   %div
+
     - if Album.find(@photo.album_id).user_id == current_user.id
       = link_to 'Edit', edit_photo_path(@photo)
 
 %section
-    / =if @user == current_user
   %div
     = form_for @photo.comments.build, url: photo_comments_path(@photo) do |f|
       %fieldset.input 
@@ -35,7 +47,7 @@
     - @photo.comments.each do |comment|
       - if comment.text 
         %p= comment.text
-       
+
         = form_for comment, url: photo_comment_path(@photo, comment) do |f|
           %fieldset.input 
             = f.label :text, 'Edit Comment'

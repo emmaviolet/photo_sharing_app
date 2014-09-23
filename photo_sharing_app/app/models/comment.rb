@@ -5,4 +5,7 @@ class Comment < ActiveRecord::Base
   belongs_to :user
 
   validates :text, presence: true
+  # Text can't contain weird characters?
+  # photo_id presence
+  # user_id presence
 end

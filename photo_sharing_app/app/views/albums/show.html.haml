@@ -4,14 +4,19 @@
   = @album.name
 / to be able to see all the photos of this album and be able to click on them
 %p
-  %b Photos:
-  - @album.photos.each do |photo|
-    = image_tag photo.photo_file.url
-%p
   %b Cover photo:
   = image_tag @album.cover_photo.photo_file.url if @album.cover_photo
+
 %p
   %b Description:
   = @album.description
-  -if @album.user_id == current_user.id 
+  - if @album.user_id == current_user.id 
     =link_to 'Edit', edit_album_path(@album)
+
+%p
+  %b Photos:
+  %ul 
+  - @album.photos.each do |photo|
+    %li
+      = link_to photo_path(photo) do 
+        = image_tag photo.photo_file.thumb.url
