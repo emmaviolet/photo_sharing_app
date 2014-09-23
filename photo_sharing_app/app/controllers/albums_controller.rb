@@ -1,4 +1,7 @@
 class AlbumsController < ApplicationController
+  
+  load_and_authorize_resource
+
   # GET /albums
   # GET /albums.json
   def index
@@ -24,7 +27,7 @@ class AlbumsController < ApplicationController
   # GET /albums/new
   # GET /albums/new.json
   def new
-    @album = current_user.albums.new if albums
+    @album = Current_user.albums.new if albums
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @album }

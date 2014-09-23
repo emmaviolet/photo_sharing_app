@@ -13,6 +13,8 @@ gem 'kaminari'
 gem 'ransack'
 gem 'haml-rails'
 gem 'rmagick'
+gem 'cancancan', '~> 1.9'
+
 
 #pagination
 #bourbon

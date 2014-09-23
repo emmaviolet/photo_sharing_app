@@ -1,4 +1,7 @@
 class RatingsController < ApplicationController
+
+  load_and_authorize_resource
+  
   # GET /ratings
   # GET /ratings.json
   def index
