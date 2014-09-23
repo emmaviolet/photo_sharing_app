@@ -1,4 +1,4 @@
-<div id = "index">
+<div id= "index">
   <% if @users.any? %>
     <h1>USERS</h1><br>
     <% @users.each do |user| %>
@@ -7,7 +7,7 @@
   <% end %>
 
   <% if @albums.any? %>
-    <h1>ALBUMS</h1> <br>
+    <h1>ALBUMS</h1><br>
     <% @albums.each do |album| %>
       <%= link_to album.name, album %>
       <%= link_to image_tag(Photo.find(album.cover_photo_id).photo_file.url), album %>
@@ -15,23 +15,16 @@
     <% end %>
   <% end %>
 
-  <% if @tags.any? || @photos.any? %>
-    <h1>PHOTOS</h1> <br>
-    <% tagged_photos = @tags.map do |t| %>
-      <% Photo.find(t.photo_id) %>
-    <% end %>
-
-    <% searched_photos = @photos + tagged_photos %>
-
-    <% searched_photos.sort_by! { |p| p.name } %>
-    <% searched_photos.each do |photo| %>
+  <% if @photos.any? %>
+    <h1>PHOTOS</h1><br>
+    <% @photos.each do |photo| %>
       <%= link_to photo.name, photo %>
-      <%= link_to image_tag(photo.photo_file.url), photo %>
+      <%= link_to image_tag(photo.photo_file.thumb.url), photo %>
       <br>
     <% end %>
   <% end %>
 
-<% if (@tags && @photos && @albums && @users).empty? %>
-  Sorry, we don't have any records that match your search query.
-<% end %>
+  <% if @photos.empty? && @albums.empty? && @users.empty? %>
+    Sorry, we don't have any records that match your search query.
+  <% end %>
 </div>
