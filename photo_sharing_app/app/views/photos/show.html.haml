@@ -1,17 +1,23 @@
 %section
   %div
+    %h2 Thumb
     = link_to image_tag(@photo.photo_file.thumb.url), @photo.photo_file.detail.url
+    %h2 Detail
+    = link_to image_tag(@photo.photo_file.detail.url), @photo.photo_file.detail.url
   %div
     %p
-      name:
+      %b Name:
       = @photo.name
+    %p
+      %b Album:
+      = link_to @photo.album.name, album_path(@photo.album)
     %p 
-      tags:
+      %b Tags:
       - @photo.tags.each do |tag|
         = tag.text
   %div
     %p
-      description:
+      %b Description:
       = @photo.try :description
   %div
     = #upvote, downvote 
@@ -20,7 +26,7 @@
       = link_to 'Edit', edit_photo_path(@photo)
 
 %section
-    / =if @user == current_user
+  / =if @user == current_user
   %div
     = form_for @photo.comments.build, url: photo_comments_path(@photo) do |f|
       %fieldset.input 
