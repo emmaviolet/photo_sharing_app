@@ -55,16 +55,17 @@ function submitAlbumInfo() {
   $.ajax({
     url: "/albums",
     type: 'POST',
-    data: { album: {name: albumName, description: albumDescription, user_id: userId } },
+    data: { album: {name: albumName, description: albumDescription, user_id: userId} },
     success: newAlbumSuccess(albumName)
   });
 }
 
 function newAlbumSuccess(albumName) {
+  var albumInfo = $('#useralbums').html();
   showNewAlbumInfo();
-  var imageTag = "<img src='http://cdn3.itzgeek.com/wp-content/themes/daily/images/default-thumb.gif' width='40' height='40'>";
+  var imageUrl = $('#album_image').val();
+  var imageTag = "<img src='" + imageUrl + "'";
+  $("#useralbums").html(albumInfo + imageTag + albumName);
   $(".notice").html(albumName + " has been added.");
   $(".notice").slideDown("fast").delay(5000).slideUp("fast");
-  $(".newalbum").html(albumName + "<br>" + imageTag);
 }
-
