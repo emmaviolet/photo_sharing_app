@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  load_and_authorize_resource
+  #bulk this badboy up
 
   def show
     @user = User.find(params[:id])

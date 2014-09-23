@@ -10,8 +10,9 @@ class Album < ActiveRecord::Base
   before_validation :set_default_params, :on => :create
 
   validates :name, presence: true
+  validates :user_id, presence: true
+  # validates_inclusion_of :format, in: %w( jpg gif png ), message: "extension %{value} is not included in the list"
   # name -> can't be certain characters?
-  # user_id presence
   # description format of?
   # cover photo (filetype validation?)
 

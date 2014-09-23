@@ -12,7 +12,6 @@ class User < ActiveRecord::Base
   has_many :photos, through: :albums
 
   # username -> format of, presence, length
-  # Email, presence, format of (Check)
 
   def role?(role_to_compare)
     self.role.to_s == role_to_compare.to_s

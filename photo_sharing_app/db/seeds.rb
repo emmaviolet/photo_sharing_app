@@ -1,7 +1,6 @@
 Album.delete_all
 Photo.delete_all
 User.delete_all
-Rating.delete_all
 Tag.delete_all
 Comment.delete_all
 
@@ -38,13 +37,6 @@ Album.all.each do |a|
     a.cover_photo = a.photos.sample
     a.save
   end
-end
-
-rating_values = [1, -1]
-
-20.times do |n|
-  r = Rating.create value: rating_values.sample, photo_id: Photo.all.sample.id, user_id: User.all.sample.id
-  r.save
 end
 
 comment_texts = ["awesome!", "great!", "loved it", "a bit rubbish", "something else please", "not as good as my photo"]

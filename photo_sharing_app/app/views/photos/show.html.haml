@@ -4,6 +4,15 @@
     = link_to image_tag(@photo.photo_file.thumb.url), @photo.photo_file.detail.url
     %h2 Detail
     = link_to image_tag(@photo.photo_file.detail.url), @photo.photo_file.detail.url
+
+  %div
+    %p
+      Photo rating:
+      = @photo.reputation_for(:votes).to_i
+    %p
+      = link_to "vote up", vote_photo_path(@photo, type: "up"), method: "post"
+      |
+      = link_to "vote down", vote_photo_path(@photo, type: "down"), method: "post"
   %div
     %p
       %b Name:
@@ -19,14 +28,7 @@
     %p
       %b Description:
       = @photo.try :description
-  %div
-    %p
-      Photo rating:
-      = @photo.reputation_for(:votes).to_i
-    %p
-      = link_to "vote up", vote_photo_path(@photo, type: "up"), method: "post"
-      |
-      = link_to "vote down", vote_photo_path(@photo, type: "down"), method: "post"
+  
   %div
 
     - if Album.find(@photo.album_id).user_id == current_user.id
