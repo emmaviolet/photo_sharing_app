@@ -11,4 +11,7 @@ class User < ActiveRecord::Base
   has_many :albums
   has_many :photos, through: :albums
 
+  # username -> format of, presence, length
+  # Email, presence, format of (Check)
+
 end

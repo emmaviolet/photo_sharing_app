@@ -8,5 +8,10 @@ class Photo < ActiveRecord::Base
 
   validates :name, presence: true
   validates :photo_file, presence: true
+  # Name weird characters
+  # Name length?
+  # Description, length, can't contain weird characters
+  # Album_id presence, numericality
+  # Photo file
 
 end

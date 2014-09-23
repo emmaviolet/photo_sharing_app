@@ -3,4 +3,6 @@ class Tag < ActiveRecord::Base
   belongs_to :photos
 
   validates :text, length: { minimum: 1 }
+  # Text, format of? Can't be weird
+  # photo_id -> integer, presence
 end

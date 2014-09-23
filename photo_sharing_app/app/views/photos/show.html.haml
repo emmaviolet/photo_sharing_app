@@ -16,7 +16,7 @@
   %div
     = #upvote, downvote 
   %div
-    / - if current_user.id == album.user_id
+    / - if current_user.id == album.user_id sort this later
     = link_to 'Edit', edit_photo_path(@photo)
 
 %section
@@ -32,7 +32,7 @@
     - @photo.comments.each do |comment|
       - if comment.text 
         %p= comment.text
-        / - if current_user.id == @photo.album.user_id
+        / - if current_user.id == @photo.album.user_id sort this later
         = form_for comment, url: photo_comment_path(@photo, comment) do |f|
           %fieldset.input 
             = f.label :text, 'Edit Comment'
