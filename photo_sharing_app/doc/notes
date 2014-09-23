@@ -75,18 +75,19 @@ Trial run git.
 
 ========================
 
-====== construction ========
+push validations and put these in trello:
 
+basic sass, validations - complete
 
-=============================
+add error message for blank album name
 
-ransack gem
+add error message for blank comment
 
-mvp - search tags
-also - search users, albums, photos
+add tag to create photo menu, remove image from view and db
 
-tags belongs to photos so should be simple to add this functionality on photos#index, less so if it is to be included when in the view for a different model.
+test tag minimum length validation
 
+rebuild app using postgres
 
 
 

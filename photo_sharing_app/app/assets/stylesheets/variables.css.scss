@@ -1,0 +1,31 @@
+// =========== header colors ===============
+
+$light-bg: #faf8f2;
+
+$gray-nav: #5b5e63;
+$gray-font: #5a5a5a;
+$light-gray-font: lighten(#5a5a5a, 40%);
+$light-font: darken(white, 5%);
+$red-heading: rgba( 239, 53, 0, 1);
+
+$red-border: 1px solid #eb412b;
+$light-border: 1px solid #f0ead8;
+$light-shadow: 0 0 0.5em 1px #ece4cd; 
+
+//============main colors==============
+
+$orange: #f47a33;
+// ==========================================
+
+// ========= messages ============
+
+$notice: green;
+$error: $red-heading;
+
+// =================================
+
+// =========== fonts ================
+
+$varela: 'Varela Round', sans-serif;
+
+// ====================================

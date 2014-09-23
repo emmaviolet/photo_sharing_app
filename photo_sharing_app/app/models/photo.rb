@@ -5,4 +5,8 @@ class Photo < ActiveRecord::Base
   has_many :comments
   has_many :tags
   belongs_to :album
+
+  validates :name, presence: true
+  validates :photo_file, presence: true
+
 end
