@@ -74,3 +74,19 @@ Plan division of labour.
 Trial run git.
 
 ========================
+
+put in trello:
+
+basic sass, validations - complete
+
+add error message for blank album name
+
+add error message for blank comment
+
+add tag to create photo menu, remove image from view and db
+
+test tag minimum length validate
+
+
+
+
