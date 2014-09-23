@@ -7,6 +7,7 @@ PhotoSharingApp::Application.routes.draw do
   devise_for :users
   resources :photos do
     resources :comments, only: [:create, :new, :edit, :update]
+    member { post :vote }
   end
   resources :users, only: [:show, :edit, :update]
   

@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  
+
   load_and_authorize_resource
 
   before_filter :authenticate_user!, except: :index
@@ -86,7 +86,11 @@ class PhotosController < ApplicationController
     end
   end
 
-  # def load_photo
-  #   @photo = Photo.find(params[:id])
-  # end
+  def vote
+    value = params[:type] == "up" ? 1 : -1
+      @photo = Photo.find(params[:id])
+      @photo.add_or_update_evaluation(:votes, value, current_user)
+      redirect_to :back, notice: "Thank you for sharing your opinion on this lovely photo."
+  end 
+
 end

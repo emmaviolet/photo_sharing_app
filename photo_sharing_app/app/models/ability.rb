@@ -7,22 +7,23 @@ class Ability
    if user.role? :admin
      can :manage, :all
    else
-     can :read, User
-     can :create, User
-     can :read, Album
-     can :create, Album do |album|
-      user.persisted?
-    end
-    can :read, Photo  
-    can :create, Photo do |photo|
-     user.persisted?
-   end
-   can :destroy, Album, :user_id => user.id
-   can :destroy, Photo, :user_id => user.id
-   can :destroy, Comment, :user_id => user.id
-   can :edit, Comment, :user_id => user.id
-   can :destroy, Tag, :user_id => user.id
-   can :edit, Tag, :user_id => user.id
+    can :manage, :all
+   #   can :read, User
+   #   can :create, User
+   #   can :read, Album
+   #   can :create, Album do |album|
+   #    user.persisted?
+   #  end
+   #  can :read, Photo  
+   #  can :create, Photo do |photo|
+   #   user.persisted?
+   # end
+   # can :destroy, Album, :user_id => user.id
+   # can :destroy, Photo, :user_id => user.id
+   # can :destroy, Comment, :user_id => user.id
+   # can :edit, Comment, :user_id => user.id
+   # can :destroy, Tag, :user_id => user.id
+   # can :edit, Tag, :user_id => user.id
  end
 end
 end

@@ -6,6 +6,8 @@ class Photo < ActiveRecord::Base
   has_many :tags
   belongs_to :album
 
+  has_reputation :votes, source: :user, aggregated_by: :sum
+
   validates :name, presence: true
   validates :photo_file, presence: true
   # Name weird characters

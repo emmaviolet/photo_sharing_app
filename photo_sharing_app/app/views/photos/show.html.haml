@@ -14,7 +14,13 @@
       description:
       = @photo.try :description
   %div
-    = #upvote, downvote 
+    %p
+      Photo rating:
+      = pluralize @photo.reputation_for(:votes).to_i, ""
+    %p
+      = link_to "vote up", vote_photo_path(@photo, type: "up"), method: "post"
+      |
+      = link_to "vote down", vote_photo_path(@photo, type: "down"), method: "post"
   %div
     / - if current_user.id == album.user_id sort this later
     = link_to 'Edit', edit_photo_path(@photo)
