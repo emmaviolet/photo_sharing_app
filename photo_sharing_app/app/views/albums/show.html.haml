@@ -13,6 +13,5 @@
 %p
   %b Description:
   = @album.description
-= link_to 'Edit', edit_album_path(@album)
-|
-\#{link_to 'Back', albums_path}
+  -if @album.user_id == current_user.id 
+    =link_to 'Edit', edit_album_path(@album)

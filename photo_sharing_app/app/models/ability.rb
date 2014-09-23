@@ -1,7 +1,6 @@
 class Ability
   include CanCan::Ability
 
-
   def initialize(user)
    user ||= User.new 
    if user.role? :admin
@@ -16,15 +15,18 @@ class Ability
     can :read, Photo  
     can :create, Photo do |photo|
      user.persisted?
-   end
-   can :destroy, Album, :user_id => user.id
-   can :destroy, Photo, :user_id => user.id
-   can :destroy, Comment, :user_id => user.id
-   can :edit, Comment, :user_id => user.id
-   can :destroy, Tag, :user_id => user.id
-   can :edit, Tag, :user_id => user.id
- end
-end
+    end
+    can :destroy, Album, :user_id => user.id
+    can :destroy, Photo do |photo|
+      User.find(Album.find(photo.album_id).user_id) == user
+    end
+    can :destroy, Comment, :user_id => user.id
+    can :edit, Comment, :user_id => user.id
+    can :destroy, Tag, :user_id => user.id
+    can :edit, Tag, :user_id => user.id
+    can :edit, User, :id => user.id
+    end
+  end
 end
     #
     # The first argument to `can` is the action you are giving the user

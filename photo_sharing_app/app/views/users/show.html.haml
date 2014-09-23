@@ -1,19 +1,21 @@
 
 %h1#user_username=@user.username
-%button#usereditinfobutton Edit Info
 
-%div#usereditinfo{:style=>"display:none;"}
-  %input#user_id{:value => @user.id, :type => "hidden"}/
-  %p Email:
-  %input#email{:value => @user.email, :type => "text"}/
-  %p Username:
-  %input#username{:value => @user.username, :type => "text"}/
-  %p Password:
-  %input#password{:value => @user.password, :type => "password"}/
-  %p Password confirmation:
-  %input#passwordconfirmation{:value => @user.password_confirmation, :type => "password"}/
-  %br
-  %input#usereditsubmit{:type => "button", :value => "Submit"}/
+/ =if can? :edit, User
+=if @user == current_user
+  %button#usereditinfobutton Edit Info
+  %div#usereditinfo{:style=>"display:none;"}
+    %input#user_id{:value => @user.id, :type => "hidden"}/
+    %p Email:
+    %input#email{:value => @user.email, :type => "text"}/
+    %p Username:
+    %input#username{:value => @user.username, :type => "text"}/
+    %p Password:
+    %input#password{:value => @user.password, :type => "password"}/
+    %p Password confirmation:
+    %input#passwordconfirmation{:value => @user.password_confirmation, :type => "password"}/
+    %br
+    %input#usereditsubmit{:type => "button", :value => "Submit"}/
 
 %h2 Albums
 
@@ -21,7 +23,7 @@
   -unless @user.albums.empty?
     -@user.albums.each do |album|
       -cover_photo = Photo.find(album.cover_photo_id)
-      =image_tag cover_photo.photo_file.url
+      =link_to(image_tag(cover_photo.photo_file.url), album)
       =album.name
   -else
     You have no albums!
