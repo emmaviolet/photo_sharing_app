@@ -11,12 +11,12 @@ class Album < ActiveRecord::Base
 
   validates :name, presence: true
   validates :name, format: { with: /^[a-zA-Z\d\s]*$/ }
+  validates :name, length: { maximum: 21 }
+  validates :description, format: { with: /^[a-zA-Z\d\s]*$/ }
+  validates :description, length: { maximum: 100 }
   validates :user_id, presence: true
-  
+  validates :user_id, numericality: { only_integer: true }
 
-
-  # name -> can't be certain characters?
-  # description format of?
   # cover photo (filetype validation?)
 
   def set_default_params
