@@ -1,0 +1,41 @@
+!!!
+%html
+  %head
+    %title PhotoSharingApp
+    %link{:href => "http://fonts.googleapis.com/css?family=Varela+Round", :rel => "stylesheet", :type => "text/css"}/
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = javascript_include_tag "main"
+    = csrf_meta_tags
+  %body
+    %header
+      %nav
+        %ul
+          %li
+            = form_tag search_path, :method => 'get' do
+              #search_input= text_field_tag :search_text, params[:search_text]
+          %li
+            #search_button= submit_tag 'Search'
+          .login
+          - if current_user
+            %li
+              = link_to current_user.username, current_user
+            %li
+              = link_to "Log out", destroy_user_session_path, method: :delete
+          - else
+            %li
+              = link_to "Sign In", new_user_session_path
+            %li
+              = link_to "Register", new_user_registration_path
+      %h1 Insta Gran
+      %div
+        %p.notice= notice
+        %p.alert= alert
+    .strip
+    %section.main_top
+    %section.main_container
+      = yield
+      :javascript
+        $(function(){
+          setup();
+        });
