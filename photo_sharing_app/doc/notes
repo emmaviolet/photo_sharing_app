@@ -75,7 +75,7 @@ Trial run git.
 
 ========================
 
-put in trello:
+push validations and put these in trello:
 
 basic sass, validations - complete
 
@@ -85,7 +85,9 @@ add error message for blank comment
 
 add tag to create photo menu, remove image from view and db
 
-test tag minimum length validate
+test tag minimum length validation
+
+rebuild app using postgres
 
 
 
