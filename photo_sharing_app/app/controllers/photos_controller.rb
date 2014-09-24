@@ -91,6 +91,7 @@ class PhotosController < ApplicationController
       @photo = Photo.find(params[:id])
       @photo.add_or_update_evaluation(:votes, value, current_user)
       redirect_to :back, notice: "Thank you for sharing your opinion on this lovely photo."
+      
   end 
 
 end
