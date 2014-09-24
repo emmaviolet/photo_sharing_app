@@ -10,7 +10,10 @@ class User < ActiveRecord::Base
 
   has_many :albums
   has_many :photos, through: :albums
-  # username -> format of, presence, length
+
+  validates :username, presence: true
+  validates :username, format: { with: /^[a-zA-Z\d\s]*$/ }
+  validates :username, length: { maximum: 21 }
 
   def role?(role_to_compare)
     self.role.to_s == role_to_compare.to_s
