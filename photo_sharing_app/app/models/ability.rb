@@ -23,8 +23,6 @@ class Ability
     end
     can :destroy, Comment, :user_id => user.id
     can :edit, Comment, :user_id => user.id
-    can :destroy, Tag, :user_id => user.id
-    can :edit, Tag, :user_id => user.id
     can :edit, User, :id => user.id
     end
   end
