@@ -1,0 +1,27 @@
+= form_for(@album) do |f|
+  - if @album.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@album.errors.count, "error")
+        prohibited this photo from being saved:
+      %ul
+        - @album.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .field
+    = f.label :description
+    %br/
+    = f.text_field :description
+  .field
+    %br
+    Cover photo
+    %br
+    - @album.photos.each do |photo|
+      .cover_photo_option
+        = image_tag(photo.photo_file.thumb.url, class: "photo_options", data: {id: photo.id} )
+        = f.radio_button :cover_photo_id, photo.id, class: "radio_buttons", style: "display: none"
+  .actions
+    = f.submit
