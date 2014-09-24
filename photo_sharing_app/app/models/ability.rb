@@ -7,7 +7,7 @@ class Ability
     if user.role? :admin
       can :manage, :all
     else
-    # can :manage, :all
+      # can :manage, :all
       can :read, User
       can :create, User
       can :read, Album
@@ -23,7 +23,10 @@ class Ability
         photo.album.user == user
       end
       can :destroy, Comment, :user_id => user.id
-      can :edit, Comment, :user_id => user.id
+      can :update, Comment, :user_id => user.id
+      can :create, Comment do |comment|
+        user.persisted?
+      end
       can :edit, User, :id => user.id
       can :vote, Photo do |photo|
         user.persisted?
