@@ -1,5 +1,7 @@
 class TagsController < ApplicationController
 
+  load_and_authorize_resource
+
   # GET /tags/new
   # GET /tags/new.json
   def new
