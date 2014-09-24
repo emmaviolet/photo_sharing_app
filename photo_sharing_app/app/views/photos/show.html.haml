@@ -35,7 +35,7 @@
 
 %section
 
-  %input#addCommentButton{ :type => "button", :value => "Add a Commet"}
+  %input#addCommentButton{ :type => "button", :value => "Add a Comment"}
   #addComment.answer_list{:style => "display:none;"} 
     = form_for @photo.comments.build, url: photo_comments_path(@photo) do |f|
       %fieldset.input 
@@ -51,12 +51,14 @@
       - if comment.text 
         %p= comment.text
 
-        = form_for comment, url: photo_comment_path(@photo, comment) do |f|
-          %fieldset.input 
-            = f.label :text, 'Edit Comment'
-            = f.text_field :text, :value => comment.text
-          %fieldset.button
-            = f.submit "Submit"
+        %input.editCommentButton{ :type => "button", :value => "Edit Comment"}
+        .editComment.answer_list{:style => "display:none;"}
+          = form_for comment, url: photo_comment_path(@photo, comment) do |f|
+            %fieldset.input 
+              = f.label :text, 'Edit Comment'
+              = f.text_field :text, :value => comment.text
+            %fieldset.button
+              = f.submit "Submit"
 
         = link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }
 
