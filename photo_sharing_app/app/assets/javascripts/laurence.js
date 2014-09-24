@@ -1,5 +1,9 @@
 console.log('javascript works');
 
-function addComment() {
-   document.getElementById('addComment').style.display = "block";
-}
+$(document).ready(function() {
+  
+  $('#addCommentButton').click(function(e) {
+    e.preventDefault();
+    $('#addComment').show('slow', function() {
+    });
+  });

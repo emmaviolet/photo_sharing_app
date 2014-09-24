@@ -35,7 +35,7 @@
 
 %section
 
-  %input{ :onclick => "addComment()", :type => "button", :value => "Add a Commet"}
+  %input#addCommentButton{ :type => "button", :value => "Add a Commet"}
   #addComment.answer_list{:style => "display:none;"} 
     = form_for @photo.comments.build, url: photo_comments_path(@photo) do |f|
       %fieldset.input 
