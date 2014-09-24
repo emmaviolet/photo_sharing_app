@@ -30,20 +30,21 @@
       = @photo.try :description
   
   %div
-
     - if Album.find(@photo.album_id).user_id == current_user.id
       = link_to 'Edit', edit_photo_path(@photo)
 
 %section
-  %div
+
+  %input{ :onclick => "addComment()", :type => "button", :value => "Add a Commet"}
+  #addComment.answer_list{:style => "display:none;"} 
     = form_for @photo.comments.build, url: photo_comments_path(@photo) do |f|
       %fieldset.input 
         = f.label :text, 'Add a Comment'
         = f.text_field :text
       %fieldset.button
         = f.submit "Submit"
+  
 
-    
   %div
     %p Comments:
     - @photo.comments.each do |comment|
