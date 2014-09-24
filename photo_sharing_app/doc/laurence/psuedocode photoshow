@@ -69,11 +69,8 @@ or preferably reroute the create and edit urls
 
   =========================================
 
-to make it so photo owner and comment owner are the only ones who can see the edit buttons:
+add comment drop down menu
 
-need to access the user id of the album from the photo show page.
+put add comments form into a partial, render the partial with js or just render the div on click, find out.
 
-photo belongs to user through albums.
-
-==================================================
 

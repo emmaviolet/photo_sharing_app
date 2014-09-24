@@ -1,8 +1,17 @@
 console.log('javascript works');
 
-// $(document).ready(function(){
-//   $('#new_comment').submit(function(){
-//     $.post($(this).attr("action"), $this.serialize(), null, "script");
-//     return false;
-//   });
-// });
+$(document).ready(function() {
+
+  $('#addCommentButton').click(function(e) {
+    e.preventDefault();
+    $('#addComment').show('slow', function() {
+    });
+  });
+
+  $('.editCommentButton').click(function(e) {
+    e.preventDefault();
+    $(this).next('.editComment').show('slow', function() {
+    });
+  });
+
+});
