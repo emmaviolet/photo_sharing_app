@@ -9,13 +9,14 @@ class Photo < ActiveRecord::Base
   has_reputation :votes, source: :user, aggregated_by: :sum
 
   validates :name, presence: true
+  validates :name, format: { with: /^[a-zA-Z\d\s]*$/ }
+  validates :name, length: { maximum: 21 }
+  validates :description, format: { with: /^[a-zA-Z\d\s]*$/ }
+  validates :description, length: { maximum: 100 }
+  validates :album_id, presence: true
+  validates :album_id, numericality: { only_integer: true }
   validates :photo_file, presence: true
-  
 
-  # Name weird characters
-  # Name length?
-  # Description, length, can't contain weird characters
-  # Album_id presence, numericality
-  # Photo file
+  # Photo file - filetype validation?
 
 end
