@@ -52,7 +52,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to :back, notice: 'Comment was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { redirect_to :back }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end

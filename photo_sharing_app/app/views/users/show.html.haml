@@ -2,29 +2,36 @@
 %h1#user_username=@user.username
 
 / =if can? :edit, User
-=if @user == current_user
+-if @user == current_user
   %button#usereditinfobutton Edit Info
   %div#usereditinfo{:style=>"display:none;"}
-    %input#user_id{:value => @user.id, :type => "hidden"}/
+    %input#user_id{:value => @user.id, :type => "hidden"}
     %p Email:
-    %input#email{:value => @user.email, :type => "text"}/
+    %input#email{:value => @user.email, :type => "text"}
     %p Username:
-    %input#username{:value => @user.username, :type => "text"}/
+    %input#username{:value => @user.username, :type => "text"}
     %p Password:
-    %input#password{:value => @user.password, :type => "password"}/
+    %input#password{:value => @user.password, :type => "password"}
     %p Password confirmation:
-    %input#passwordconfirmation{:value => @user.password_confirmation, :type => "password"}/
+    %input#passwordconfirmation{:value => @user.password_confirmation, :type => "password"}
     %br
-    %input#usereditsubmit{:type => "button", :value => "Submit"}/
+    %input#usereditsubmit{:type => "button", :value => "Submit"}
+
 
 %h2 Albums
 
 %div#useralbums
   -unless @user.albums.empty?
     -@user.albums.each do |album|
-      -cover_photo = Photo.unscoped.find(album.cover_photo_id)
-      =link_to(image_tag(cover_photo.photo_file.url), album)
-      =album.name
+      .useralbum
+        -cover_photo = Photo.unscoped.find(album.cover_photo_id)
+        =link_to(image_tag(cover_photo.photo_file.thumb.url), album)
+        %br
+        =album.name
+        %br
+        =link_to "Edit", ""
+        |
+        =link_to "Delete", ""
   -else
     You have no albums!
 %br

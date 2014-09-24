@@ -1,19 +1,19 @@
 function setup() {
   $('#account_nav0').click(function(ev){
     ev.preventDefault();
-    showDropdown(0);
+    hiddenLogin(0);
   });
   $('#account_nav1').click(function(ev){
     ev.preventDefault();
-    showDropdown(1);
+    hiddenLogin(1);
   });
   $('#account_nav2').click(function(ev){
     ev.preventDefault();
-    showDropdown(2);
+    hiddenLogin(2);
   });
   $('#account_nav3').click(function(ev){
     ev.preventDefault();
-    showDropdown(3);
+    hiddenLogin(3);
   });
   $('#usereditinfobutton').click(showUserEdit);
   $('#newalbumbutton').click(showNewAlbumInfo);
@@ -21,24 +21,21 @@ function setup() {
   $('#new_album_submit').click(submitAlbumInfo);
 }
 
-function showDropdown(num) {
-  var showType = document.getElementById('hidden_login'+num).style.display;
-  if(showType === 'none'){
-    $('#hidden_login'+num).slideDown("slow").css("display","block");
-  } else {
-    $('#hidden_login'+num).slideUp("slow");
-    setTimeout(function(){document.getElementById('hidden_login'+num).style.display = "none"}, 1000);
-  };
+function hiddenLogin(num) {
+  showDropdown('hidden_login'+num);
 }
 
-
 function showUserEdit() {
-  var showType = document.getElementById('usereditinfo').style.display;
+  showDropdown('usereditinfo');
+}
+
+function showDropdown(element) {
+  var showType = document.getElementById(element).style.display;
   if(showType === 'none'){
-    $('#usereditinfo').slideDown("slow").css("display","block");
+    $('#'+ element).slideDown("slow").css("display","block");
   } else {
-    $('#usereditinfo').slideUp("slow");
-    setTimeout(function(){document.getElementById('usereditinfo').style.display = "none"}, 1000);
+    $('#' + element).slideUp("slow");
+    setTimeout(function(){document.getElementById(element).style.display = "none"}, 1000);
   };
 }
 
@@ -91,8 +88,8 @@ function newAlbumSuccess(albumName) {
   var albumInfo = $('#useralbums').html();
   showNewAlbumInfo();
   var imageUrl = $('#album_image').val();
-  var imageTag = "<img src='" + imageUrl + "'";
-  $("#useralbums").html(albumInfo + imageTag + albumName);
+  var imageTag = "<img src='" + imageUrl + "' width=100px height=100px>";
+  $("#useralbums").html(albumInfo + "<div class='useralbum'>" + imageTag + "<br>" + albumName + "<br><a href=''>Edit</a> | <a href=''>Delete</a></div>");
   $(".notice").html(albumName + " has been added.");
   $(".notice").slideDown("fast").delay(5000).slideUp("fast");
 }
