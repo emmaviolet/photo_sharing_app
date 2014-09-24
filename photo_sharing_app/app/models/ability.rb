@@ -23,8 +23,11 @@ class Ability
         photo.album.user == user
       end
       can :destroy, Comment, :user_id => user.id
-      can :edit, Comment, :user_id => user.id
-      can :edit, User, :id => user.id
+      can :create, Comment do |comment| user.persisted?
+      end
+      can :update, Comment, :user_id => user.id
+  
+      can :update, User, :id => user.id
       can :vote, Photo do |photo|
         user.persisted?
       end
