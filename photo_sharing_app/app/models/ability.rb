@@ -19,6 +19,8 @@ class Ability
        user.persisted?
       end
       can :destroy, Album, :user_id => user.id
+      can :edit, Album, :user_id => user.id
+      can :update, Album, :user_id => user.id
       can :destroy, Photo do |photo|
         photo.album.user == user
       end

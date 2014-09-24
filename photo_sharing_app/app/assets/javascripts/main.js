@@ -1,26 +1,14 @@
 function setup() {
-  $('#account_nav0').click(function(ev){
+  $('.account_nav').click(function(ev){
     ev.preventDefault();
-    hiddenLogin(0);
-  });
-  $('#account_nav1').click(function(ev){
-    ev.preventDefault();
-    hiddenLogin(1);
-  });
-  $('#account_nav2').click(function(ev){
-    ev.preventDefault();
-    hiddenLogin(2);
-  });
-  $('#account_nav3').click(function(ev){
-    ev.preventDefault();
-    hiddenLogin(3);
+    var num = event.target.id;
+    hiddenLogin(num);
   });
   $('#usereditinfobutton').click(showUserEdit);
   $('#newalbumbutton').click(showNewAlbumInfo);
   $('#usereditsubmit').click(submitUserInfo);
   $('#new_album_submit').click(submitAlbumInfo);
   $('.cover_photo_option').click(function(ev){
-    ev.preventDefault();
     selectCoverPhoto(event.target);
   });
 }
