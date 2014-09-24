@@ -6,7 +6,6 @@ class PhotosController < ApplicationController
   # GET /photos.json
   def index
     @photos = Photo.find_with_reputation(:votes, :all, order: 'votes desc')
-
     @photos = Kaminari.paginate_array(@photos).page(params[:page])
 
 
