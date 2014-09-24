@@ -24,8 +24,6 @@ class Ability
       end
       can :destroy, Comment, :user_id => user.id
       can :edit, Comment, :user_id => user.id
-      can :destroy, Tag, :user_id => user.id
-      can :edit, Tag, :user_id => user.id
       can :edit, User, :id => user.id
       can :vote, Photo do |photo|
         user.persisted?
@@ -56,6 +54,7 @@ class Ability
 
     end
   end
+end
 end
     #
     # The first argument to `can` is the action you are giving the user
