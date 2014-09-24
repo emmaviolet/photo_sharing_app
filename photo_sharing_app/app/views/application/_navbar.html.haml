@@ -7,30 +7,30 @@
       #search_button= submit_tag 'Search'
     .login
     - if current_user
-      %li#account_nav0
-        = link_to current_user.username, ""
+      %li
+        = link_to current_user.username, "", id: :account_nav0
         %ul#hidden_login0{:style=>"display:none;"}
           %li 
             = link_to "Account", current_user
           %li 
             = link_to "Log out", destroy_user_session_path, method: :delete
     - else
-      %li#account_nav1
-        = link_to "Guest", ""
+      %li
+        = link_to "Guest", "", id: :account_nav1
         %ul#hidden_login1{:style=>"display:none;"}
           %li 
             = link_to "Sign In", new_user_session_path
           %li 
             = link_to "Register", new_user_registration_path
-    %li#account_nav2
-      = link_to "Browse", ""
+    %li
+      = link_to "Browse", "", id: :account_nav2
       %ul#hidden_login2{:style=>"display:none;"}
         %li
           = link_to "Albums", albums_path
         %li
           = link_to "Photos", photos_path
-    %li#account_nav3
-      = link_to "New", ""
+    %li
+      = link_to "New", "", id: :account_nav3
       %ul#hidden_login3{:style=>"display:none;"}
         %li
           = link_to "Album", new_album_path

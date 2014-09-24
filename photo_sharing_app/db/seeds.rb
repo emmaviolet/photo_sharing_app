@@ -1,7 +1,6 @@
 Album.delete_all
 Photo.delete_all
 User.delete_all
-Tag.delete_all
 Comment.delete_all
 
 # default photo
@@ -44,11 +43,4 @@ comment_texts = ["awesome!", "great!", "loved it", "a bit rubbish", "something e
 20.times do |n|
   c = Comment.create text: comment_texts.sample, photo_id: Photo.all.sample.id, user_id: User.all.sample.id
   c.save
-end
-
-tag_texts = ["funny", "cats", "dogs", "lazy", "sunny", "yolo"]
-
-20.times do |n|
-  t = Tag.create text: tag_texts.sample, photo_id: Photo.all.sample.id
-  t.save
 end

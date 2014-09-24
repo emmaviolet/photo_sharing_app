@@ -22,8 +22,7 @@
       = link_to @photo.album.name, album_path(@photo.album)
     %p 
       %b Tags:
-      - @photo.tags.each do |tag|
-        = tag.text
+      = @photo.tags
   %div
     %p
       %b Description:

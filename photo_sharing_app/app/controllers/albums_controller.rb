@@ -1,5 +1,7 @@
 class AlbumsController < ApplicationController
 
+  load_and_authorize_resource
+
   # GET /albums
   # GET /albums.json
   def index
