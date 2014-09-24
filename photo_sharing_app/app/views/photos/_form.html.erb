@@ -19,11 +19,6 @@
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
-
-  <div class="field">
-    <%= f.label :image %><br />
-    <%= f.text_field :image %>
-  </div> 
     <div class="field">
     <%= f.label :album_id %><br />
     <%= f.collection_select :album_id, Album.all, :id, :name %>

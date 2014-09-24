@@ -1,28 +1,21 @@
 function setup() {
-  $('#account_nav0').click(function(ev){
+  $('.account_nav').click(function(ev){
     ev.preventDefault();
-    hiddenLogin(0);
-  });
-  $('#account_nav1').click(function(ev){
-    ev.preventDefault();
-    hiddenLogin(1);
-  });
-  $('#account_nav2').click(function(ev){
-    ev.preventDefault();
-    hiddenLogin(2);
-  });
-  $('#account_nav3').click(function(ev){
-    ev.preventDefault();
-    hiddenLogin(3);
+    var num = event.target.id;
+    hiddenLogin(num);
   });
   $('#usereditinfobutton').click(showUserEdit);
   $('#newalbumbutton').click(showNewAlbumInfo);
   $('#usereditsubmit').click(submitUserInfo);
   $('#new_album_submit').click(submitAlbumInfo);
+  $('.cover_photo_option').click(function(ev){
+    selectCoverPhoto(event.target);
+  });
 }
 
 function hiddenLogin(num) {
   showDropdown('hidden_login'+num);
+  setTimeout(function(){showDropdown('hidden_login'+num)}, 3000);
 }
 
 function showUserEdit() {
@@ -92,4 +85,20 @@ function newAlbumSuccess(albumName) {
   $("#useralbums").html(albumInfo + "<div class='useralbum'>" + imageTag + "<br>" + albumName + "<br><a href=''>Edit</a> | <a href=''>Delete</a></div>");
   $(".notice").html(albumName + " has been added.");
   $(".notice").slideDown("fast").delay(5000).slideUp("fast");
+}
+
+function selectCoverPhoto(object) {
+  $('.photo_options').each(function(i) {
+    this.style.border = "none";
+  });
+  $('.radio_buttons').each(function(i) {
+    this.checked = false;
+  });
+  var target = $(object).attr("data-id");
+  object.style.border = "2px solid black";
+  $("#album_cover_photo_id_" + target)[0].checked = true;
+}
+
+function clearBorder(object) {
+  console.log('success');
 }

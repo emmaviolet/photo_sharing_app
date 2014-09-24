@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-  attr_accessible :album_id, :description, :image, :name, :photo_file, :remote_photo_file_url, :tags
+  attr_accessible :album_id, :description, :name, :photo_file, :remote_photo_file_url, :tags
   mount_uploader :photo_file, PhotoFileUploader
   has_many :ratings
   has_many :comments
