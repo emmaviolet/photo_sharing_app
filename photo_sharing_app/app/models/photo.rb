@@ -8,6 +8,8 @@ class Photo < ActiveRecord::Base
 
   has_reputation :votes, source: :user, aggregated_by: :sum
 
+  default_scope -> { excluding_default }
+
   validates :name, presence: true
   validates :photo_file, presence: true
   # Name weird characters
@@ -15,5 +17,10 @@ class Photo < ActiveRecord::Base
   # Description, length, can't contain weird characters
   # Album_id presence, numericality
   # Photo file
+
+  def self.excluding_default
+    @default_photo ||= Photo.find_by_name("default_album_cover_image")
+    self.where('photos.id != ?', @default_photo)
+  end
 
 end

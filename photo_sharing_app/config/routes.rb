@@ -13,5 +13,9 @@ PhotoSharingApp::Application.routes.draw do
   
   get '/search', to: 'home#index'
   root to: "photos#index"
+  
+  resources :photos do
+    get 'page/:page' , action: :index, on: :collection
+  end
 
 end

@@ -7,6 +7,9 @@ class PhotosController < ApplicationController
   def index
     @photos = Photo.find_with_reputation(:votes, :all, order: 'votes desc')
 
+    @photos = Kaminari.paginate_array(@photos).page(params[:page])
+
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @photos }

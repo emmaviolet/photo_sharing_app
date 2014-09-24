@@ -1,22 +1,15 @@
 <h1>Most popular photos</h1>
 
-<% default_photo = Photo.find_by_name("default_album_cover_image") %>
-<% @photos -= [default_photo] %>
-
 <% @photos.each do |photo| %> 
 
   <%= link_to photo.name, photo %>
   <%= image_tag(photo.photo_file.detail.url) %>
-  <% album_id = photo.album_id %>
-  <% album = Album.find(album_id) %>
-  <% user_id = album.user_id %>
-  <% user = User.find(user_id) %>
-  <%= link_to user.email, user %>
-  <%= link_to album.name, album %>
+  <%= link_to photo.album.user.email, photo.album.user if photo.album && photo.album.user %>
+  <%= link_to photo.album.name, photo.album if photo.album %>
 
-  <% if Album.find(photo.album_id).user_id == current_user.try(:id) %>
-  <%= link_to 'Edit', edit_photo_path(photo) %>
-  <%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Edit', edit_photo_path(photo) if can? :edit, photo %>
+  <%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } if can? :delete, photo %>
   <br>
-  <% end %>
 <% end %>
+
+<%= paginate @photos %>
