@@ -73,4 +73,8 @@ add comment drop down menu
 
 put add comments form into a partial, render the partial with js or just render the div on click, find out.
 
+went with div on a click. boooooooom.
+
+Now - make the forms appear if they are currently display none, and disappear if they currently display block.
+
 
