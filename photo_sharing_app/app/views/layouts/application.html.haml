@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %title PhotoSharingApp
+    %link{:href => "http://fonts.googleapis.com/css?family=Varela+Round", :rel => "stylesheet", :type => "text/css"}/
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = javascript_include_tag "main"
+    = csrf_meta_tags
+  %body
+    %header
+      = render :partial => "navbar"
+      %h1 Insta Gran
+      %div
+        %p.notice= notice
+        %p.alert= alert
+    .strip
+    %section.main_top
+    %section.main_container
+      = yield
+
+      .bottom_gutter
+      %footer.bottom_nav
+        %p site navigation buttons go here.

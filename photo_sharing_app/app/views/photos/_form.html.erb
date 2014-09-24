@@ -29,6 +29,12 @@
     <%= f.collection_select :album_id, Album.all, :id, :name %>
   </div>
     <div class="field">
+    <%= f.fields_for :tag do |ff| %>
+    <%= ff.label :tags %><br />
+    <%= ff.text_field :text %>
+    <% end %>
+  </div>
+    <div class="field">
     <%= f.label :photo_file %><br />
     <%= f.file_field :photo_file %>
   </div>

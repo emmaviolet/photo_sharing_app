@@ -89,3 +89,12 @@ header {
 .bottom_nav {
   border-top: $light-border;
 }
+
+#hidden_login0 {
+  display: inline-block;
+  position: absolute;
+  background-color: green;
+  height: 500px;
+  width: 100px;
+}
+
