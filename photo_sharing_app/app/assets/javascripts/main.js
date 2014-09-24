@@ -1,13 +1,36 @@
 function setup() {
+  $('#account_nav0').click(function(ev){
+    ev.preventDefault();
+    showDropdown(0);
+  });
+  $('#account_nav1').click(function(ev){
+    ev.preventDefault();
+    showDropdown(1);
+  });
+  $('#account_nav2').click(function(ev){
+    ev.preventDefault();
+    showDropdown(2);
+  });
+  $('#account_nav3').click(function(ev){
+    ev.preventDefault();
+    showDropdown(3);
+  });
   $('#usereditinfobutton').click(showUserEdit);
   $('#newalbumbutton').click(showNewAlbumInfo);
   $('#usereditsubmit').click(submitUserInfo);
   $('#new_album_submit').click(submitAlbumInfo);
-  $('#account_nav0').click(showDropdown0);
-  $('#account_nav1').click(showDropdown1);
-  $('#account_nav2').click(showDropdown2);
-  $('#account_nav3').click(showDropdown3);
 }
+
+function showDropdown(num) {
+  var showType = document.getElementById('hidden_login'+num).style.display;
+  if(showType === 'none'){
+    $('#hidden_login'+num).slideDown("slow").css("display","block");
+  } else {
+    $('#hidden_login'+num).slideUp("slow");
+    setTimeout(function(){document.getElementById('hidden_login'+num).style.display = "none"}, 1000);
+  };
+}
+
 
 function showUserEdit() {
   var showType = document.getElementById('usereditinfo').style.display;
@@ -18,47 +41,6 @@ function showUserEdit() {
     setTimeout(function(){document.getElementById('usereditinfo').style.display = "none"}, 1000);
   };
 }
-
-function showDropdown0() {
-  var showType = document.getElementById('hidden_login0').style.display;
-  if(showType === 'none'){
-    $('#hidden_login0').slideDown("slow").css("display","block");
-  } else {
-    $('#hidden_login0').slideUp("slow");
-    setTimeout(function(){document.getElementById('hidden_login0').style.display = "none"}, 1000);
-  };
-}
-
-function showDropdown1() {
-  var showType = document.getElementById('hidden_login1').style.display;
-  if(showType === 'none'){
-    $('#hidden_login1').slideDown("slow").css("display","block");
-  } else {
-    $('#hidden_login1').slideUp("slow");
-    setTimeout(function(){document.getElementById('hidden_login1').style.display = "none"}, 1000);
-  };
-}
-
-function showDropdown2() {
-  var showType = document.getElementById('hidden_login2').style.display;
-  if(showType === 'none'){
-    $('#hidden_login2').slideDown("slow").css("display","block");
-  } else {
-    $('#hidden_login2').slideUp("slow");
-    setTimeout(function(){document.getElementById('hidden_login2').style.display = "none"}, 1000);
-  };
-}
-
-function showDropdown3() {
-  var showType = document.getElementById('hidden_login3').style.display;
-  if(showType === 'none'){
-    $('#hidden_login3').slideDown("slow").css("display","block");
-  } else {
-    $('#hidden_login3').slideUp("slow");
-    setTimeout(function(){document.getElementById('hidden_login3').style.display = "none"}, 1000);
-  };
-}
-
 
 function submitUserInfo() {
   var userEmail = $('#email').val();
