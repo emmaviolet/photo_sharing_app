@@ -81,3 +81,20 @@ header {
   max-width: 960px;
   margin: 0 auto;
 }
+
+.bottom_gutter {
+  height: 300px;
+}
+
+.bottom_nav {
+  border-top: $light-border;
+}
+
+#hidden_login0 {
+  display: inline-block;
+  position: absolute;
+  background-color: green;
+  height: 500px;
+  width: 100px;
+}
+

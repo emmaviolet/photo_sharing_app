@@ -10,10 +10,13 @@ class Album < ActiveRecord::Base
   before_validation :set_default_params, :on => :create
 
   validates :name, presence: true
+  validates :name, format: { with: /^[a-zA-Z\d\s]*$/ }
+  validates :name, length: { maximum: 21 }
+  validates :description, format: { with: /^[a-zA-Z\d\s]*$/ }
+  validates :description, length: { maximum: 100 }
   validates :user_id, presence: true
-  # validates_inclusion_of :format, in: %w( jpg gif png ), message: "extension %{value} is not included in the list"
-  # name -> can't be certain characters?
-  # description format of?
+  validates :user_id, numericality: { only_integer: true }
+
   # cover photo (filetype validation?)
 
   def set_default_params
