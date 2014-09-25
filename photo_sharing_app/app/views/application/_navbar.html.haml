@@ -35,7 +35,7 @@
           - if current_user
             %a{:href => "/users/#{current_user.id}/#newalbum"} Album
           - else
-            = link_to "Albums", albums_path
+            = link_to "Album", current_user
         %li
           = link_to "Photo", new_photo_path
 

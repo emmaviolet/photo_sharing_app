@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  #bulk this badboy up
-
   def show
     @user = User.find(params[:id])
 
