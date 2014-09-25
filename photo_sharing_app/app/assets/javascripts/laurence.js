@@ -26,12 +26,9 @@ $(document).ready(function() {
       },
       // error: $(".notice").html('Error: Your comment cannot be saved. Please try again, without using any special characters.')
     });
-  });
-  //put comments each loop form into partial
-  // render partial on success
-  
+  }); 
 
-  $('.editCommentButton').click(function() {
+  $('#allComments').on('click', '.editCommentButton', function() {
     if ($(this).next('.editComment')[0].style.display === 'none'){
       $(this).next('.editComment').show('slow', function() {
       });
