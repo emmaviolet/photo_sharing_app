@@ -1,9 +1,10 @@
 PhotoSharingApp::Application.routes.draw do
 
-  resources :ratings
   resources :tags
   resources :comments, except: [:create, :new, :edit, :update]
-  resources :albums
+  resources :albums do
+    get 'page/:page', action: :index, on: :collection
+  end
   devise_for :users
   resources :photos do
     resources :comments, only: [:create, :new, :edit, :update]

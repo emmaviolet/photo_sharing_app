@@ -19,15 +19,17 @@ class Ability
        user.persisted?
       end
       can :destroy, Album, :user_id => user.id
+      can :edit, Album, :user_id => user.id
+      can :update, Album, :user_id => user.id
       can :destroy, Photo do |photo|
         photo.album.user == user
       end
       can :destroy, Comment, :user_id => user.id
-      can :update, Comment, :user_id => user.id
-      can :create, Comment do |comment|
-        user.persisted?
+      can :create, Comment do |comment| user.persisted?
       end
-      can :edit, User, :id => user.id
+      can :update, Comment, :user_id => user.id
+  
+      can :update, User, :id => user.id
       can :vote, Photo do |photo|
         user.persisted?
       end

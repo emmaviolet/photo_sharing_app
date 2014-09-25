@@ -5,12 +5,13 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
+      @albums = Album.order(:created_at).page(params[:page])
+    # @albums = Album.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @albums }
-    end
+    # respond_to do |format|
+    #   format.html # index.html.erb
+    #   format.json { render json: @albums }
+    # end
   end
 
   # GET /albums/1
@@ -33,7 +34,8 @@ class AlbumsController < ApplicationController
       format.json { render json: @album }
     end
   end
-
+  
+  end
   # GET /albums/1/edit
   def edit
     @album = Album.find(params[:id])
@@ -78,7 +80,7 @@ class AlbumsController < ApplicationController
     @album.destroy
 
     respond_to do |format|
-      format.html { redirect_to albums_url }
+      format.html { redirect_to :back, notice: 'Album was deleted.' }
       format.json { head :no_content }
     end
   end

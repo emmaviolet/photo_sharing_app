@@ -7,32 +7,32 @@
     .login
     - if current_user
       %li
-        = link_to current_user.username, "", id: :account_nav0
-        %ul#hidden_login0{:style=>"display:none;"}
+        = link_to current_user.username, "", class: :account_nav, id: 0
+        %ul.hidden_login#hidden_login0{:style=>"display:none;"}
           %li 
             = link_to "Account", current_user
           %li 
             = link_to "Log out", destroy_user_session_path, method: :delete
     - else
       %li
-        = link_to "Guest", "", id: :account_nav1
-        %ul#hidden_login1{:style=>"display:none;"}
+        = link_to "Guest", "", class: :account_nav, id: 1
+        %ul.hidden_login#hidden_login1{:style=>"display:none;"}
           %li 
             = link_to "Sign In", new_user_session_path
           %li 
             = link_to "Register", new_user_registration_path
     %li
-      = link_to "Browse", "", id: :account_nav2
-      %ul#hidden_login2{:style=>"display:none;"}
+      = link_to "Browse", "", class: :account_nav, id: 2
+      %ul.hidden_login#hidden_login2{:style=>"display:none;"}
         %li
           = link_to "Albums", albums_path
         %li
           = link_to "Photos", photos_path
     %li
-      = link_to "New", "", id: :account_nav3
-      %ul#hidden_login3{:style=>"display:none;"}
+      = link_to "New", "", class: :account_nav, id: 3
+      %ul.hidden_login#hidden_login3{:style=>"display:none;"}
         %li
-          = link_to "Album", new_album_path
+          = link_to "Album", current_user
         %li
           = link_to "Photo", new_photo_path
 
