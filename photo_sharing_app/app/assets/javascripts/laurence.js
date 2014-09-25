@@ -20,10 +20,10 @@ $(document).ready(function() {
       url: '/photos/' + photoId + "/comments.json",
       type: 'POST',
       data: { comment: { text: addCommentText, photo_id: photoId, user_id: userId } }, 
-      dataType: "json",
-      success: $( "#commentsContainer" ).load( '/photos/' + photoId + '.html #allComments', function() {
-        alert( "Comment Added." );
-      }),
+      success: function(response) {   
+        $('#allComments').append( response );
+
+      },
       // error: $(".notice").html('Error: Your comment cannot be saved. Please try again, without using any special characters.')
     });
   });

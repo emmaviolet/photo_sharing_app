@@ -1,7 +1,6 @@
 
 - if comment.text 
   %p= comment.text
-  %input#photo_id{:value => @photo.id, :type => "hidden"}
   %input.editCommentButton{ :type => "button", :value => "Edit Comment"}
   .editComment.answer_list{:style => "display:none;"}
     = form_for comment, url: photo_comment_path(@photo, comment) do |f|

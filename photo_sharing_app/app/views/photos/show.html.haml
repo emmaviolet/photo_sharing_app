@@ -48,6 +48,7 @@
 
   #commentsContainer
     #allComments
+      %input#photo_id{:value => @photo.id, :type => "hidden"}
       %p Comments:
       - @photo.comments.each do |comment|
         =render partial: 'comment', object: comment

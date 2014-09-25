@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
    @photo = Photo.find(params[:photo_id])
    @comment = @photo.comments.build
    @comment.user = current_user
-  end
+ end
 
   # POST /comments
   # POST /comments.json
@@ -32,7 +32,10 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html { redirect_to :back, notice: 'Comment was successfully created.' }
-        format.json { render json: @comment, status: :created, location: @comment }
+        format.json {
+          comment_string = render_to_string(partial: 'photos/comment', object: @comment, formats: [:html])
+          render json: comment_string.to_json, status: :created, location: @comment
+        }
       else
         format.html { redirect_to :back }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
