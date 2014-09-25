@@ -1,0 +1,13 @@
+.album
+  = link_to album do
+    = image_tag album.cover_photo.photo_file.url
+  .overlay
+    %ul
+      %li
+        %h3
+          = link_to album.name, album 
+      %li= "by #{album.user.username} #{time_ago_in_words(album.created_at)} ago"
+    %ul.inline
+      %li= link_to 'Show', album
+      %li= link_to 'Edit', edit_album_path(album)
+      %li= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' }

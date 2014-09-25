@@ -37,7 +37,7 @@ header {
     display: inline-block;
     color: $red-heading;
     font-size: 48px;
-    margin-left: 110px;
+    margin-left: 90px;
     margin-right: 60px;
   }
   div {
@@ -91,6 +91,11 @@ max-height: 25%;
 .main_container {
   max-width: 960px;
   margin: 0 auto;
+  &:after {
+      content: " ";
+      display: table;
+      clear: both;
+  }
 }
 
 .bottom_gutter {
@@ -99,6 +104,7 @@ max-height: 25%;
 
 .bottom_nav {
   border-top: $light-border;
+  clear: both;
 }
 
 #hidden_login0 {
@@ -146,15 +152,78 @@ max-height: 25%;
   display: inline-block;
 }
 
-.cover_photo_option {
-  display: inline-block;
+.album {
+  width: 298px;
+  min-width: 298px;
+  overflow: hidden;
+  border: 1px solid #000;
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  margin: 10px;
+
+  .overlay {
+    background: rgba(0,0,0,0.7);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+
+    &:hover {
+      background: #fff;
+      color: #111;
+      ul.inline li a {
+        color: #111;
+      }
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        list-style-type: none;
+        h3 {
+          line-height: 0;
+          a {
+            color: #ef3500;
+          }
+        }
+      }
+      &.inline {
+        padding: 10px 0;
+        li {
+          display: inline;
+          float: right;
+          line-height: 20px;
+          a {
+            color: #fff;
+            text-decoration: underline;
+            padding: 0 8px;
+            &:last-child {
+              padding: 0 0 0 8px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  img {
+    height: 320px;
+  }
 }
-.coverphoto {
-  display: inline-block;
-  max-width: 80px;
-  position: absolute;
-  background-color: $notice;
-  padding: 3px;
-}
+
+// .cover_photo_option {
+//   display: inline-block;
+// }
+// .coverphoto {
+//   display: inline-block;
+//   max-width: 80px;
+//   position: absolute;
+//   background-color: $notice;
+//   padding: 3px;
+// }
 
 
