@@ -3,10 +3,10 @@ console.log('javascript works');
 $(document).ready(function() {
   $('#addCommentButton').click(function() {
     if ($('#addComment')[0].style.display === 'none'){
-      $('#addComment').show('slow', function() {
+      $('#addComment').slideDown('slow', function() {
       });
     } else {
-      $('#addComment').hide('slow', function() {
+      $('#addComment').slideUp('slow', function() {
       });
     }
   });
@@ -23,7 +23,7 @@ $(document).ready(function() {
       data: { comment: { text: addCommentText, photo_id: photoId, user_id: userId } }, 
       success: function(response) {   
         $('#allComments').append( response );
-        $('#addComment').hide('slow', function() {
+        $('#addComment').slideUp('slow', function() {
         });
         $('#comment_text').val("");
       },
@@ -35,10 +35,10 @@ $(document).ready(function() {
 
   $('#allComments').on('click', '.editCommentButton', function() {
     if ($(this).next('.editComment')[0].style.display === 'none'){
-      $(this).next('.editComment').show('slow', function() {
+      $(this).next('.editComment').slideDown('slow', function() {
       });
     } else {
-      $(this).next('.editComment').hide('slow', function() {
+      $(this).next('.editComment').slideUp('slow', function() {
       });
     }
   });
