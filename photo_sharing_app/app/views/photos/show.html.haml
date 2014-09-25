@@ -1,55 +1,56 @@
-%section
+.photo_show_page
 
   %div
-    %p
-      = @photo.name
+    %h3
+      = @photo.name{','}
       from the album
       = link_to @photo.album.name, album_path(@photo.album)
 
   %div
+    - if Album.find(@photo.album_id).user_id == current_user.id
+      %p.edit_destroy
+        = link_to 'Edit Photo', edit_photo_path(@photo)
+        |
+        = link_to 'Remove Photo', @photo, method: :delete, data: { confirm: 'Are you sure?' }
+
+  .show_pic
     = link_to image_tag(@photo.photo_file.detail.url), @photo.photo_file.detail.url
 
   %div
-    %p
+    %p.rating
       Rating:
       = @photo.reputation_for(:votes).to_i
-    %p
+    %p#rating_choice
       = link_to "vote up", vote_photo_path(@photo, type: "up"), method: "post"
       |
       = link_to "vote down", vote_photo_path(@photo, type: "down"), method: "post"
-  %div
-    %p 
-      %b Tags:
-      = @photo.tags
-  %div
-    %p
-      %b Description:
-      = @photo.try :description
-  
-  %div
-    - if Album.find(@photo.album_id).user_id == current_user.id
+
+  #photo_tagdesc    
+    - if @photo.tags
+      %p.tags 
+        tags:
+        = @photo.tags
       %p
-        = link_to 'Edit', edit_photo_path(@photo)
-        |
-        = link_to 'Destroy', @photo, method: :delete, data: { confirm: 'Are you sure?' } 
+        - if @photo.description
+          = @photo.try :description
+  
 
-%section
+  %section
 
 
-  = javascript_tag "var userId = #{current_user.id};"
+    = javascript_tag "var userId = #{current_user.id};"
 
-  %input#addCommentButton{ :type => "button", :value => "Add a Comment"}
-  #addComment.answer_list{:style => "display:none;"} 
-    = form_for @photo.comments.build, url: photo_comments_path(@photo) do |f|
-      %fieldset.input 
-        = f.label :text, 'Add a Comment'
-        = f.text_field :text
-      %fieldset.button
-        = f.submit "Submit"
+    %input#addCommentButton{ :type => "button", :value => "Share your thoughts"}
+    #addComment.answer_list{:style => "display:none;"} 
+      = form_for @photo.comments.build, url: photo_comments_path(@photo) do |f|
+        %fieldset.input 
+          = f.text_field :text
+        %fieldset.button
+          = f.submit "Submit"
 
-  #commentsContainer
-    #allComments
-      %input#photo_id{:value => @photo.id, :type => "hidden"}
-      %p Comments:
-      - @photo.comments.each do |comment|
-        =render partial: 'comment', object: comment
+    #commentsContainer
+      #allComments
+        %input#photo_id{:value => @photo.id, :type => "hidden"}
+        %h4 All thoughts 
+        - @photo.comments.each do |comment|
+          =render partial: 'comment', object: comment

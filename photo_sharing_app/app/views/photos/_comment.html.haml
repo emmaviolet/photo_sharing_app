@@ -6,14 +6,13 @@
     = comment.text
 
 - if comment.user_id == current_user.id
-  %input.editCommentButton{ :type => "button", :value => "Edit Comment"}
+  %input.editCommentButton{ :type => "button", :value => "Refine your thoughts"}
   .editComment.answer_list{:style => "display:none;"}
     = form_for comment, url: photo_comment_path(@photo, comment) do |f|
       %fieldset.input 
-        = f.label :text, 'Edit Comment'
         = f.text_field :text, :value => comment.text
       %fieldset.button
         = f.submit "Submit"
 
-  = link_to 'Remove Comment', comment, method: :delete, data: { confirm: 'Are you sure?' }
+  = link_to 'Discard your thoughts', comment, method: :delete, data: { confirm: 'Are you sure?' }
 
