@@ -22,7 +22,8 @@ $(document).ready(function() {
       data: { comment: { text: addCommentText, photo_id: photoId, user_id: userId } }, 
       success: function(response) {   
         $('#allComments').append( response );
-
+        $('#addComment').hide('slow', function() {
+        });
       },
       error: function() { 
         alert('Error: Your comment cannot be saved. Please try again.');
