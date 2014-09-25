@@ -102,7 +102,7 @@ function newAlbumSuccess(data) {
   showNewAlbumInfo();
   var imageUrl = $('#album_image').val();
   var imageTag = "<img src='" + imageUrl + "' width=100px height=100px>";
-  $("#useralbumscontainer").html(albumInfo + "<div class='useralbum'>" + imageTag + "<br>" + albumName + "<br><a href='/albums/" + albumId + "/edit'>Edit</a> | <a href='/albums/" + albumId + "' data-confirm='Are you sure?' data-method='delete' rel='nofollow'>Delete</a></div>");
+  $("#useralbumscontainer").html(albumInfo + "<div class='useralbum'>" + imageTag + "<br>" + albumName + "<br><a href='/albums/" + albumId + "/edit'>Edit</a> | <a href='/albums/" + albumId + "' data-confirm='Are you sure?' data-method='delete' rel='nofollow'>Delete</a><br><a href='/photos/new?album_id=" + albumId + "'>Add Photo</a></div><br>");
   $(".notice").html(albumName + " has been added.");
   $(".notice").slideDown("fast").delay(5000).slideUp("fast");
 }
