@@ -50,7 +50,10 @@ function submitUserInfo() {
     url: "/users/"+userId+".json",
     type: 'PUT',
     data: { user: {email: userEmail, username: userUsername, password: userPassword, password_confirmation: userPasswordConfirmation } },
-    success: submitSuccess(userUsername)
+    success: submitSuccess(userUsername),
+    error: function() { 
+      alert('Error: Your changes are invalid. Please try again.');
+    }
   });
 }
 
@@ -80,7 +83,10 @@ function submitAlbumInfo() {
     url: "/albums",
     type: 'POST',
     data: { album: {name: albumName, description: albumDescription, user_id: userId} },
-    success: newAlbumSuccess(albumName)
+    success: newAlbumSuccess(albumName),
+    error: function() { 
+      alert('Error: Your input is invalid. Please try again.');
+    }
   });
 }
 
