@@ -1,7 +1,5 @@
 notes
 
-===========================
+add link to specific part of user show page for creating a new album
 
-add more validations to done in trello but make a new card just for photo file formats to do later.
-
-==============================
+see if you can figure out why updating user info kills the session.

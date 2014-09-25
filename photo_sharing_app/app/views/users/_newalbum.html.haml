@@ -1,0 +1,10 @@
+%button#newalbumbutton New Album
+
+%div#newalbuminfo{:style=>"display:none;"}
+  %input#album_image{:value => Photo.unscoped.find_by_name("default_album_cover_image").photo_file.url, :type => "hidden"}/
+  %p Name:
+  %input#album_name{:type => "text"}/
+  %p Description:
+  %input#album_description{:type => "text"}/
+  %br
+  %input#new_album_submit{:type => "button", :value => "Submit"}/
