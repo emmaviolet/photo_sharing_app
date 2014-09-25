@@ -32,7 +32,7 @@
       = link_to "New", "", id: :account_nav3
       %ul#hidden_login3{:style=>"display:none;"}
         %li
-          = link_to "Album", current_user
+          %a{:href => "/users/#{current_user.id}/#newalbum"} Album
         %li
           = link_to "Photo", new_photo_path
 
