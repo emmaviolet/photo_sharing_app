@@ -29,7 +29,7 @@ class PhotosController < ApplicationController
   # GET /photos/new.json
   def new
     @photo = Photo.new
-
+    @photo.album_id = params[:album_id]
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @photo }
@@ -48,8 +48,12 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
-        format.json { render json: @photo, status: :created, location: @photo }
+        unless params[:subaction]
+          format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
+          format.json { render json: @photo, status: :created, location: @photo }
+        else
+          format.html { redirect_to new_photo_path(album_id: @photo.album.id), notice: 'Photo was successfully added.'}
+        end
       else
         format.html { render action: "new" }
         format.json { render json: @photo.errors, status: :unprocessable_entity }

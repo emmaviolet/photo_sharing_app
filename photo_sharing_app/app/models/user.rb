@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :profile_photo
+  mount_uploader :profile_photo, PhotoFileUploader
   # attr_accessible :title, :body
 
   has_many :albums
@@ -19,6 +20,10 @@ class User < ActiveRecord::Base
 
   def role?(role_to_compare)
     self.role.to_s == role_to_compare.to_s
+  end
+
+  def default_photo
+    self.profile_photo ||= Photo.unscoped.find_by_name("default_album_cover_image").id
   end
 
 end
