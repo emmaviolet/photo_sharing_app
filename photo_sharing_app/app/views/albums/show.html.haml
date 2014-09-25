@@ -9,7 +9,7 @@
     = image_tag @album.cover_photo.photo_file.url if @album.cover_photo
 
 %p
-  %div.description Description:
+  .description 
   = @album.description
   - if user_signed_in?
     - if @album.user_id == current_user.id 
@@ -22,12 +22,13 @@
         =link_to 'Edit', edit_album_path(@album)
 
 
-%p
-  %b Photos:
-  %ul 
-  - @album.photos.each do |photo|
-    %li
-      = link_to photo_path(photo) do 
-        = image_tag photo.photo_file.thumb.url
--if @album.user_id == current_user.id
-  = link_to 'New Photo', new_photo_path(album_id: @album.id)
+.photothumbs 
+  %ul
+    - @album.photos.each do |photo|
+      %li
+        %p
+          = photo.name
+        = link_to photo_path(photo) do 
+          = image_tag photo.photo_file.thumb.url
+  -if @album.user_id == current_user.id
+    = link_to 'New Photo', new_photo_path(album_id: @album.id)

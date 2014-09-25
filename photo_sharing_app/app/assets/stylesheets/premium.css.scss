@@ -90,11 +90,35 @@
       }
     } 
     .showcomment {
-       
+
     } 
     .editCommentButton {
       font-size: 14px;
     }
   }
 }
+
+//=============photo index ====================
+
+.photothumbs {
+  max-width: 600px;
+  margin: 0 auto;
+  ul {
+    display: inline-block;
+    li {
+      font-size: 12px;
+      display: inline-block;
+      p {
+        text-align: center;
+      }
+      img {
+        border: 1px solid $gray-border;
+        height: 160px;
+        width: 160px;
+        border-radius: 20px;
+      }
+    } 
+  }
+}
+
 
