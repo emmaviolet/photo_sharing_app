@@ -1,6 +1,9 @@
 
 - if comment.text 
-  %p= comment.text
+  %p 
+    = User.find(comment.user_id).username
+    says:
+    = comment.text
   %input.editCommentButton{ :type => "button", :value => "Edit Comment"}
   .editComment.answer_list{:style => "display:none;"}
     = form_for comment, url: photo_comment_path(@photo, comment) do |f|
