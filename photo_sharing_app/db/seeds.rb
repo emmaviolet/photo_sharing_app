@@ -44,3 +44,5 @@ comment_texts = ["awesome!", "great!", "loved it", "a bit rubbish", "something e
   c = Comment.create text: comment_texts.sample, photo_id: Photo.all.sample.id, user_id: User.all.sample.id
   c.save
 end
+
+p = Photo.find_by_name("default_album_cover_image").delete
