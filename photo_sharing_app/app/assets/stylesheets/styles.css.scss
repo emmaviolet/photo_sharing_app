@@ -226,27 +226,48 @@ max-height: 25%;
 //   background-color: $notice;
 //   padding: 3px;
 // }
+.notice {
+  text-align: center;
+  color: $orange;
+  font-size: 30px;
+  font-weight: 900;
 
+}
 .cphoto {
   max-width: 500px;
   margin: 0 auto;
+  border: 10px solid rgba(0,0,0,0.6) ;
   img {
     max-width: 100%;
     max-height: 100%;
   }
 }
 li a img {
-  float: left;
   width: 150px;
   min-width: 80px;
   padding: 5px;
-  float: left;
 }
-.photo{
+.photo {
   width: 200px;
   min-width: 80px;
   max-height: 100px;
   min-width: 80px;
   max-height: 80px;
+  float: left;
+  list-style: none;
 }
-
+div.description {
+  border: $light-border;
+  width: 500px;
+  margin: 0 auto;
+}
+.edit { 
+  width: 50px;
+  height: 25px;
+  color: $light-font;
+  text-align: center;
+  background-color: $gray-nav;
+}
+.bottom_gutter {
+  max-height: 300px;
+}
