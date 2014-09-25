@@ -21,25 +21,16 @@ header {
       li {
         list-style-type: none;
         display: inline-block;
-        padding: 0px 8px 0px 8px;
+        padding: 0px 110px 0px 0px;
         font-size: 15px;
         font-weight: bold;
-      }
-      .login {
-        display: inline-block;
-        float: right;
-        margin-right: 40px;
-        margin-bottom: 550px;
-        li {
-          color: $light-font;
-          padding: 0px 8px 0px 8px;
-          font-size: 15px;
-          font-weight: bold;
           a {
+            position: center;
             color: $light-font;
-          }
+            font-size: 15px;
+            letter-spacing: 1px;
+          } 
         }
-      }
     } 
   }
   h1 {
@@ -64,7 +55,27 @@ header {
     }
   }
 }
-
+th {
+  color: $notice;
+  font-size: 20px;
+}
+tr a {
+  display: inline-block;
+  width: 70px;
+  height: 25px;
+  color: $light-font;
+  text-align: center;
+  border-left: 1px solid #fff;
+  background-color: $gray-nav;
+}
+td image { 
+max-width: 25%;
+max-height: 25%;
+}
+// nav.pagination{
+//   color: $gray-nav;
+//   background-color: #gray-nav;
+// }
 .strip {
   height: 16px;
   background-color: $orange;
@@ -92,8 +103,9 @@ header {
 
 #hidden_login0 {
   display: inline-block;
+ text-align: center;
   position: absolute;
-  background-color: green;
+  background-color: $orange;
   height: 100px;
   width: 100px;
 }
@@ -101,7 +113,7 @@ header {
 #hidden_login1 {
   display: inline-block;
   position: absolute;
-  background-color: green;
+  background-color: $orange;
   height: 100px;
   width: 100px;
 }
@@ -109,7 +121,7 @@ header {
 #hidden_login2 {
   display: inline-block;
   position: absolute;
-  background-color: green;
+  background-color: $gray-nav;
   height: 100px;
   width: 100px;
 }
@@ -117,7 +129,7 @@ header {
 #hidden_login3 {
   display: inline-block;
   position: absolute;
-  background-color: green;
+  background-color: $notice;
   height: 100px;
   width: 100px;
 }
@@ -125,6 +137,7 @@ header {
 #search_input {
   float: left;
 }
+
 #search_button {
   float: right;
 }
@@ -136,3 +149,12 @@ header {
 .cover_photo_option {
   display: inline-block;
 }
+.coverphoto {
+  display: inline-block;
+  max-width: 80px;
+  position: absolute;
+  background-color: $notice;
+  padding: 3px;
+}
+
+

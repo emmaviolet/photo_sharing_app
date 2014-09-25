@@ -35,7 +35,6 @@ class AlbumsController < ApplicationController
     end
   end
   
-  end
   # GET /albums/1/edit
   def edit
     @album = Album.find(params[:id])

@@ -9,13 +9,16 @@
     %th
     %th
     %th
+  .coverphoto
   - @albums.each do |album|
     %tr
       / <td><haml_loud> album.user_id </haml_loud></td>
       %td= album.name
       / to be able to see a cover photo here and be able to click to see individual photo page
       %td= image_tag album.cover_photo.photo_file.url
+
       %td= album.description
+      
       %td= link_to 'Show', album
       %td= link_to 'Edit', edit_album_path(album)
       %td= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' }
