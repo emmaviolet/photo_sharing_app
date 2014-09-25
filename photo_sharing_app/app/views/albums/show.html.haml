@@ -13,7 +13,8 @@
   - if user_signed_in?
     - if @album.user_id == current_user.id 
       =link_to 'Edit', edit_album_path(@album)
-
+      |
+      =link_to "Delete", @album, method: :delete, data: { confirm: 'Are you sure?' }
 %p
   %b Photos:
   %ul 

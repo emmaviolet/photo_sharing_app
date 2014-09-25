@@ -62,6 +62,7 @@ function submitUserInfo() {
 function submitSuccess(userUsername) {
   showUserEdit();
   $("#user_username").html(userUsername);
+  $("#0").html(userUsername);
   $(".notice").html("User info successfully updated.");
   $(".notice").slideDown("fast").delay(5000).slideUp("fast");
 }
@@ -82,13 +83,14 @@ function submitAlbumInfo() {
   var userId = $('#user_id').val();
 
   $.ajax({
-    url: "/albums",
+    url: "/albums.json",
     type: 'POST',
     data: { album: {name: albumName, description: albumDescription, user_id: userId} },
     success: function(data) {
+      console.log(data);
       newAlbumSuccess(albumName);
     },
-    error: function() { 
+    error: function(data) { 
       alert('Error: Your input is invalid. Please try again.');
     }
   });
@@ -99,7 +101,7 @@ function newAlbumSuccess(albumName) {
   showNewAlbumInfo();
   var imageUrl = $('#album_image').val();
   var imageTag = "<img src='" + imageUrl + "' width=100px height=100px>";
-  $("#useralbums").html(albumInfo + "<div class='useralbum'>" + imageTag + "<br>" + albumName + "<br><a href=''>Edit</a> | <a href=''>Delete</a></div>");
+  $("#useralbumscontainer").html(albumInfo + "<div class='useralbum'>" + imageTag + "<br>" + albumName + "<br><a href=''>Edit</a> | <a href=''>Delete</a></div>");
   $(".notice").html(albumName + " has been added.");
   $(".notice").slideDown("fast").delay(5000).slideUp("fast");
 }

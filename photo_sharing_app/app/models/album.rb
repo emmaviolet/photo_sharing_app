@@ -20,7 +20,7 @@ class Album < ActiveRecord::Base
   # cover photo (filetype validation?)
 
   def set_default_params
-    self.cover_photo_id ||= Photo.find_by_name("default_album_cover_image").id
+    self.cover_photo_id ||= Photo.unscoped.find_by_name("default_album_cover_image").id
   end
 
 end
