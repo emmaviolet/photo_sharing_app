@@ -28,16 +28,14 @@
           = link_to "Albums", albums_path
         %li
           = link_to "Photos", photos_path
-    %li
-      = link_to "New", "", class: :account_nav, id: 3
-      %ul.hidden_login#hidden_login3{:style=>"display:none;"}
-        %li
-          - if current_user
-            %a{:href => "/users/#{current_user.id}/#newalbum"} Album
-          - else
-            = link_to "Album", current_user
-        %li
-          = link_to "Photo", new_photo_path
+    - if current_user
+      %li
+        = link_to "New", "", class: :account_nav, id: 3
+        %ul.hidden_login#hidden_login3{:style=>"display:none;"}
+          %li
+            = link_to "Album", new_album_path
+          %li
+            = link_to "Photo", new_photo_path
 
 :javascript
   $(function(){

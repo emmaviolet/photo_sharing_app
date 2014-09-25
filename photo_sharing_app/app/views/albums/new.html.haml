@@ -1,6 +1,4 @@
-%h1 
-  Editing 
-  = @album.name
+%h1 New album
 = form_for(@album) do |f|
   - if @album.errors.any?
     #error_explanation
@@ -18,13 +16,6 @@
     = f.label :description
     %br/
     = f.text_field :description
-  .field
     %br
-    Cover photo
     %br
-    - @album.photos.each do |photo|
-      .cover_photo_option
-        = image_tag(photo.photo_file.thumb.url, class: "photo_options", data: {id: photo.id} )
-        = f.radio_button :cover_photo_id, photo.id, class: "radio_buttons", style: "display: none"
-  .actions
     = f.submit
