@@ -8,7 +8,7 @@ function setup() {
   $('#newalbumbutton').click(showNewAlbumInfo);
   $('#usereditsubmit').click(submitUserInfo);
   $('#new_album_submit').click(submitAlbumInfo);
-  $('.cover_photo_option').click(function(ev){
+  $('.photo_options').click(function(ev){
     selectCoverPhoto(event.target);
   });
 }
@@ -87,8 +87,7 @@ function submitAlbumInfo() {
     type: 'POST',
     data: { album: {name: albumName, description: albumDescription, user_id: userId} },
     success: function(data) {
-      console.log(data);
-      newAlbumSuccess(albumName);
+      newAlbumSuccess(data);
     },
     error: function(data) { 
       alert('Error: Your input is invalid. Please try again.');
@@ -96,12 +95,14 @@ function submitAlbumInfo() {
   });
 }
 
-function newAlbumSuccess(albumName) {
+function newAlbumSuccess(data) {
+  var albumId = data.id;
+  var albumName = data.name;
   var albumInfo = $('#useralbums').html();
   showNewAlbumInfo();
   var imageUrl = $('#album_image').val();
   var imageTag = "<img src='" + imageUrl + "' width=100px height=100px>";
-  $("#useralbumscontainer").html(albumInfo + "<div class='useralbum'>" + imageTag + "<br>" + albumName + "<br><a href=''>Edit</a> | <a href=''>Delete</a></div>");
+  $("#useralbumscontainer").html(albumInfo + "<div class='useralbum'>" + imageTag + "<br>" + albumName + "<br><a href='/albums/" + albumId + "/edit'>Edit</a> | <a href='/albums/" + albumId + "' data-confirm='Are you sure?' data-method='delete' rel='nofollow'>Delete</a></div>");
   $(".notice").html(albumName + " has been added.");
   $(".notice").slideDown("fast").delay(5000).slideUp("fast");
 }

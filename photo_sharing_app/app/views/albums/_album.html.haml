@@ -1,6 +1,7 @@
 .album
   = link_to album do
-    = image_tag album.cover_photo.photo_file.url
+    - image = Photo.unscoped.find(album.cover_photo_id)
+    = image_tag image.photo_file.url
   .overlay
     %ul
       %li
