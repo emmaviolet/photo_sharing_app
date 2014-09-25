@@ -24,7 +24,9 @@ $(document).ready(function() {
         $('#allComments').append( response );
 
       },
-      // error: $(".notice").html('Error: Your comment cannot be saved. Please try again, without using any special characters.')
+      error: function() { 
+        alert('Error: Your comment cannot be saved. Please try again.');
+      }
     });
   }); 
 
