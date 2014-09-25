@@ -14,10 +14,6 @@ gem 'ransack'
 gem 'haml-rails'
 gem 'rmagick'
 gem 'cancancan', '~> 1.9'
-gem "paperclip", "~> 4.2"
-
-#pagination
-#bourbon
 
 group :development, :test do
   gem 'pry-rails'

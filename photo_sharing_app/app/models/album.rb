@@ -10,9 +10,9 @@ class Album < ActiveRecord::Base
   before_validation :set_default_params, :on => :create
 
   validates :name, presence: true
-  validates :name, format: { with: /^[a-zA-Z\d\s]*$/ }
+  validates :name, format: { with: /^[a-z.,!?A-Z\d\s]*$/ }
   validates :name, length: { maximum: 21 }
-  validates :description, format: { with: /^[a-zA-Z\d\s]*$/ }
+  validates :description, format: { with: /^[a-z.,!?A-Z\d\s]*$/ }
   validates :description, length: { maximum: 100 }
   validates :user_id, presence: true
   validates :user_id, numericality: { only_integer: true }
