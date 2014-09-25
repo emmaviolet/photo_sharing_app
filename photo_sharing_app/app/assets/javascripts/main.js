@@ -2,7 +2,7 @@ function setup() {
   $('.account_nav').click(function(ev){
     ev.preventDefault();
     var num = event.target.id;
-    hiddenLogin(num);
+    showLogin(num);
   });
   $('#usereditinfobutton').click(showUserEdit);
   $('#newalbumbutton').click(showNewAlbumInfo);
@@ -13,9 +13,16 @@ function setup() {
   });
 }
 
-function hiddenLogin(num) {
-  showDropdown('hidden_login'+num);
-  setTimeout(function(){showDropdown('hidden_login'+num)}, 3000);
+function showLogin(num) {
+  $('.displayed_object').each(function(i) {
+    var that = this;
+    $(this).stop().slideUp("slow", function() {
+      $(that).removeClass('displayed_object');
+    });
+  });
+  $('#hidden_login'+num).slideDown("slow").addClass("displayed_object").delay(1000).slideUp("slow", function() {
+    $('#hidden_login'+num).removeClass('displayed_object');
+  })
 }
 
 function showUserEdit() {
@@ -43,7 +50,9 @@ function submitUserInfo() {
     url: "/users/"+userId+".json",
     type: 'PUT',
     data: { user: {email: userEmail, username: userUsername, password: userPassword, password_confirmation: userPasswordConfirmation } },
-    success: submitSuccess(userUsername),
+    success: function(data) {
+      submitSuccess(userUsername);
+    },
     error: function() { 
       alert('Error: Your changes are invalid. Please try again.');
     }
@@ -76,7 +85,9 @@ function submitAlbumInfo() {
     url: "/albums",
     type: 'POST',
     data: { album: {name: albumName, description: albumDescription, user_id: userId} },
-    success: newAlbumSuccess(albumName),
+    success: function(data) {
+      newAlbumSuccess(albumName);
+    },
     error: function() { 
       alert('Error: Your input is invalid. Please try again.');
     }
