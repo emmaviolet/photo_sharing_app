@@ -1,0 +1,22 @@
+#index
+  - if @users.any?
+    %h1 USERS
+    %br
+      - @users.each do |user|
+        = link_to user.username, user
+  - if @albums.any?
+    %h1 ALBUMS
+    %br
+      - @albums.each do |album|
+        = link_to album.name, album
+        = link_to image_tag(Photo.find(album.cover_photo_id).photo_file.url), album
+        %br
+  - if @photos.any?
+    %h1 PHOTOS
+    %br
+      - @photos.each do |photo|
+        = link_to photo.name, photo
+        = link_to image_tag(photo.photo_file.thumb.url), photo
+        %br
+  - if @photos.empty? && @albums.empty? && @users.empty?
+    Sorry, we don't have any records that match your search query.

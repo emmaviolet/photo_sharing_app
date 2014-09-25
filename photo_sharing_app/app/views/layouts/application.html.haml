@@ -10,7 +10,8 @@
   %body
     %header
       = render :partial => "navbar"
-      %h1 Instagran
+      %h1 
+        = link_to "Instagran", photos_path
       %div
         %p.notice= notice
         %p.alert= alert

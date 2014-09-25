@@ -1,7 +1,6 @@
 
 %h1#user_username=@user.username
 
-/ =if can? :edit, User
 -if @user == current_user
   %button#usereditinfobutton Edit Info
   %div#usereditinfo{:style=>"display:none;"}
@@ -20,22 +19,28 @@
 
 %h2 Albums
 
-%div#useralbums
+%div#useralbumscontainer
   -unless @user.albums.empty?
-    -@user.albums.each do |album|
-      .useralbum
-        -cover_photo = Photo.unscoped.find(album.cover_photo_id)
-        =link_to(image_tag(cover_photo.photo_file.thumb.url), album)
-        %br
-        =album.name
-        %br
-        =link_to "Edit", edit_album_path(album)
-        |
-        =link_to "Delete", album, method: :delete, data: { confirm: 'Are you sure?' }
+    %div#useralbums
+      -@user.albums.each do |album|
+        .useralbum
+          -cover_photo = Photo.unscoped.find(album.cover_photo_id)
+          =link_to(image_tag(cover_photo.photo_file.thumb.url), album)
+          %br
+          =album.name
+          %br
+          -if @user == current_user
+            =link_to "Edit", edit_album_path(album)
+            |
+            =link_to "Delete", album, method: :delete, data: { confirm: 'Are you sure?' }
   -else
-    You have no albums!
+    -if @user == current_user
+      You have no albums!
+    -else
+      = @user.username
+      has no albums!
 %br
-  
-  #newalbum
-    = render 'newalbum'
+  -if @user == current_user
+    #newalbum
+      = render 'newalbum'
   
