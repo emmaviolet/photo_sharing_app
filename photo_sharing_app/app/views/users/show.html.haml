@@ -1,7 +1,6 @@
 
 %h1#user_username=@user.username
 
-/ =if can? :edit, User
 -if @user == current_user
   %button#usereditinfobutton Edit Info
   %div#usereditinfo{:style=>"display:none;"}
