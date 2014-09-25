@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :evaluations, class_name: "ReputationSystem", as: :source
 
   validates :username, presence: true
-  validates :username, format: { with: /^[a-zA-Z\d\s]*$/ }
+  validates :username, format: { with: /^[a-z.,!A-Z\d\s]*$/ }
   validates :username, length: { maximum: 21 }
 
   def role?(role_to_compare)

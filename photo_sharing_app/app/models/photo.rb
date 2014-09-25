@@ -10,9 +10,9 @@ class Photo < ActiveRecord::Base
   default_scope -> { excluding_default }
 
   validates :name, presence: true
-  validates :name, format: { with: /^[a-zA-Z\d\s]*$/ }
+  validates :name, format: { with: /^[a-z.,!A-Z\d\s]*$/ }
   validates :name, length: { maximum: 21 }
-  validates :description, format: { with: /^[a-zA-Z\d\s]*$/ }
+  validates :description, format: { with: /^[a-z.,!A-Z\d\s]*$/ }
   validates :description, length: { maximum: 100 }
   validates :album_id, presence: true
   validates :album_id, numericality: { only_integer: true }
