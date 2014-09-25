@@ -1,10 +1,23 @@
 %h1 Most popular photos
+
 - @photos.each do |photo|
-  = link_to photo.name, photo
-  .popular= image_tag(photo.photo_file.detail.url)
-  = link_to photo.album.user.email, photo.album.user if photo.album && photo.album.user
-  = link_to photo.album.name, photo.album if photo.album
-  = link_to 'Edit', edit_photo_path(photo) if can? :edit, photo
-  = link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } if can? :delete, photo
+  %p
+    = link_to photo.name, photo
+  %p 
+    Rating:
+    = photo.reputation_for(:votes).to_i
+
+  .popular 
+    = link_to photo do
+      = image_tag(photo.photo_file.detail.url)
+
+  %p
+    Uploaded by the lovely
+    = link_to photo.album.user.username, photo.album.user if photo.album && photo.album.user
+    to the lovely album
+    = link_to photo.album.name, photo.album if photo.album
+  %p   
+  
   %br
 = paginate @photos
+

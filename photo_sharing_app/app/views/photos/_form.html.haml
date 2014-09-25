@@ -7,6 +7,13 @@
       %ul
         - @photo.errors.full_messages.each do |msg|
           %li= msg
+  -if @photo.album_id
+    = f.hidden_field :album_id, :value => @photo.album_id
+  -else
+    .field
+      = f.label :album_id
+      %br/
+      = f.collection_select :album_id, Album.find_all_by_user_id(current_user.id), :id, :name
   .field
     = f.label :name
     %br/
@@ -15,10 +22,6 @@
     = f.label :description
     %br/
     = f.text_field :description
-  .field
-    = f.label :album_id
-    %br/
-    = f.collection_select :album_id, Album.find_all_by_user_id(current_user.id), :id, :name
   .field
     = f.label :tags
     %br/
@@ -32,4 +35,5 @@
     %br/
     = f.text_field :remote_photo_file_url
   .actions
-    = f.submit
+    = f.button :submit, name: "subaction", value: false
+    = f.button :'add another', name: "subaction", value: true

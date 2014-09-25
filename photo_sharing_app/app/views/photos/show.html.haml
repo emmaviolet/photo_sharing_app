@@ -1,22 +1,23 @@
 %section
+
+  %div
+    %p
+      = @photo.name
+      from the album
+      = link_to @photo.album.name, album_path(@photo.album)
+
   %div
     = link_to image_tag(@photo.photo_file.detail.url), @photo.photo_file.detail.url
 
   %div
     %p
-      Photo rating:
+      Rating:
       = @photo.reputation_for(:votes).to_i
     %p
       = link_to "vote up", vote_photo_path(@photo, type: "up"), method: "post"
       |
       = link_to "vote down", vote_photo_path(@photo, type: "down"), method: "post"
   %div
-    %p
-      %b Name:
-      = @photo.name
-    %p
-      %b Album:
-      = link_to @photo.album.name, album_path(@photo.album)
     %p 
       %b Tags:
       = @photo.tags
@@ -52,10 +53,3 @@
       %p Comments:
       - @photo.comments.each do |comment|
         =render partial: 'comment', object: comment
-  
-
-%footer
-  /photo uploaded by link_to username
-  /album: link_to album, album.name
-
-    

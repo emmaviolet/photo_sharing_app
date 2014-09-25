@@ -15,6 +15,7 @@ $(document).ready(function() {
     ev.preventDefault();
     var photoId =  $('#photo_id').val();
     var addCommentText = $('#comment_text').val();
+    var formInput = $('#comment_text').val()
     //userId defined in view
     $.ajax({
       url: '/photos/' + photoId + "/comments.json",
@@ -22,7 +23,9 @@ $(document).ready(function() {
       data: { comment: { text: addCommentText, photo_id: photoId, user_id: userId } }, 
       success: function(response) {   
         $('#allComments').append( response );
-
+        $('#addComment').hide('slow', function() {
+        });
+        $('#comment_text').val("");
       },
       error: function() { 
         alert('Error: Your comment cannot be saved. Please try again.');

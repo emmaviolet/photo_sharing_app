@@ -23,12 +23,11 @@
 
 
 %p
-  / %b Photos:
-  %ul
-    - @album.photos.each do |photo|
-      %li.photo 
-        = link_to photo_path(photo) do 
-          = image_tag photo.photo_file.thumb.url
-
-
-
+  %b Photos:
+  %ul 
+  - @album.photos.each do |photo|
+    %li
+      = link_to photo_path(photo) do 
+        = image_tag photo.photo_file.thumb.url
+-if @album.user_id == current_user.id
+  = link_to 'New Photo', new_photo_path(album_id: @album.id)
