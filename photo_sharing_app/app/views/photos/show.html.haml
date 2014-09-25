@@ -44,7 +44,7 @@
     #addComment.answer_list{:style => "display:none;"} 
       = form_for @photo.comments.build, url: photo_comments_path(@photo) do |f|
         %fieldset.input 
-          = f.text_field :text, class: 'comments_field'
+          = f.text_area :text, class: 'comments_field'
         %fieldset.button
           = f.submit "Submit"
 

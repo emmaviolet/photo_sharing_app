@@ -2,17 +2,17 @@
 - if comment.text 
   %p#commenter  
     = User.find(comment.user_id).username
-  %p
+  %p.showcomment
     = comment.text
 
 - if comment.user_id == current_user.id
-  %input.editCommentButton{ :type => "button", :value => "Refine your thoughts"}
+  %input.editCommentButton{ :type => "button", :value => "Refine thoughts"}
   .editComment.answer_list{:style => "display:none;"}
     = form_for comment, url: photo_comment_path(@photo, comment) do |f|
       %fieldset.input 
-        = f.text_field :text, :value => comment.text, class: 'comments_field'
+        = f.text_area :text, :value => comment.text, class: 'comments_field'
       %fieldset.button
         = f.submit "Submit"
   %p
-    = link_to 'Discard your thoughts', comment, method: :delete, data: { confirm: 'Are you sure?' }
+    = link_to 'Discard thoughts', comment, method: :delete, data: { confirm: 'Are you sure?' }
 
