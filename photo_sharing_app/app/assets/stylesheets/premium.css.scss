@@ -52,7 +52,7 @@
   }
 
   #photo_tagdesc {
-    border-top: 1px solid $gray-font;
+    border-top: 1px solid $gray-border;
     margin-bottom: 30px;
     padding: 10px 0px 10px 0px;
   }
@@ -61,7 +61,7 @@
     h4 {
       font-size: 24px;
       padding-top: 32px;
-      border-top: 1px solid $gray-font;
+      border-top: 1px solid $gray-border;
     }
     max-width: 600px;
     margin: 0 auto;  
@@ -80,7 +80,7 @@
     #commenter {
       color: $red-heading;
       font-weight: bold;
-      border-top: 1px solid $gray-font;
+      border-top: 1px solid $gray-border;
       padding-top: 16px;
     }
     p {
