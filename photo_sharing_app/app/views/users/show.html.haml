@@ -1,6 +1,9 @@
 
 %h1#user_username=@user.username
 
+= image_tag @user.profile_photo.url
+%br
+
 -if @user == current_user
   %button#usereditinfobutton Edit Info
   %div#usereditinfo{:style=>"display:none;"}
@@ -16,22 +19,25 @@
     %br
     %input#usereditsubmit{:type => "button", :value => "Submit"}
 
-
 %h2 Albums
 
 %div#useralbumscontainer
-  -unless @user.albums.empty?
-    %div#useralbums
-      = render @user.albums
-
-  -else
+  -if @user.albums.empty?
     -if @user == current_user
       You have no albums!
     -else
       = @user.username
       has no albums!
-%br
+  %br
+  %br
   -if @user == current_user
     #newalbum
       = render 'newalbum'
+  %br
+  -unless @user.albums.empty?
+    %div#useralbums
+      = render @user.albums
+
+  
+
   
