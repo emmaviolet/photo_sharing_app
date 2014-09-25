@@ -34,7 +34,7 @@
 
 %section
 
-  / = current_user.id
+
   = javascript_tag "var userId = #{current_user.id};"
 
   %input#addCommentButton{ :type => "button", :value => "Add a Comment"}
@@ -45,24 +45,13 @@
         = f.text_field :text
       %fieldset.button
         = f.submit "Submit"
+
+  #commentsContainer
+    #allComments
+      %p Comments:
+      - @photo.comments.each do |comment|
+        =render partial: 'comment', object: comment
   
-
-  %div
-    %p Comments:
-    - @photo.comments.each do |comment|
-      - if comment.text 
-        %p= comment.text
-        %input#photo_id{:value => @photo.id, :type => "hidden"}
-        %input.editCommentButton{ :type => "button", :value => "Edit Comment"}
-        .editComment.answer_list{:style => "display:none;"}
-          = form_for comment, url: photo_comment_path(@photo, comment) do |f|
-            %fieldset.input 
-              = f.label :text, 'Edit Comment'
-              = f.text_field :text, :value => comment.text
-            %fieldset.button
-              = f.submit "Submit"
-
-        = link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }
 
 %footer
   /photo uploaded by link_to username

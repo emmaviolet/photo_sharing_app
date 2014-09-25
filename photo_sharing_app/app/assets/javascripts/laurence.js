@@ -13,19 +13,23 @@ $(document).ready(function() {
 
   $('#addComment').on('submit', function(ev) {
     ev.preventDefault();
-    // console.log('default prevented');
     var photoId =  $('#photo_id').val();
-    // console.log(photoId);
     var addCommentText = $('#comment_text').val();
-    // console.log(addCommentText);
-    console.log(userId);
+    //userId defined in view
     $.ajax({
-      url: '/photos/' + photoId + ".json",
-      // type: 'POST',
-      // data: { comment: { text: addCommentText } }, 
-      // success: $(".notice").html('Comment Added.')
+      url: '/photos/' + photoId + "/comments.json",
+      type: 'POST',
+      data: { comment: { text: addCommentText, photo_id: photoId, user_id: userId } }, 
+      dataType: "json",
+      success: $( "#commentsContainer" ).load( '/photos/' + photoId + '.html #allComments', function() {
+        alert( "Comment Added." );
+      }),
+      // error: $(".notice").html('Error: Your comment cannot be saved. Please try again, without using any special characters.')
     });
   });
+  //put comments each loop form into partial
+  // render partial on success
+  
 
   $('.editCommentButton').click(function() {
     if ($(this).next('.editComment')[0].style.display === 'none'){
