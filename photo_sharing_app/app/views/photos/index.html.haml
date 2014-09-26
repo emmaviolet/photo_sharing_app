@@ -10,7 +10,7 @@
 
     .popular 
       = link_to photo do
-        = image_tag(photo.photo_file.detail.url)
+        = image_tag photo.photo_file.detail.url
 
     %p
       Uploaded by the lovely
