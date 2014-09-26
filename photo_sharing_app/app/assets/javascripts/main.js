@@ -100,10 +100,11 @@ function newAlbumSuccess(data) {
   var albumId = data.id;
   var albumName = data.name;
   var albumInfo = $('#useralbums').html();
+  var userUsername = $('#user_username').html();
   showNewAlbumInfo();
   var imageUrl = $('#album_image').val();
-  var imageTag = "<img src='" + imageUrl + "' width=100px height=100px>";
-  $("#useralbumscontainer").html(albumInfo + "<div class='useralbum'>" + imageTag + "<br>" + albumName + "<br><a href='/albums/" + albumId + "/edit'>Edit</a> | <a href='/albums/" + albumId + "' data-confirm='Are you sure?' data-method='delete' rel='nofollow'>Delete</a><br><a href='/photos/new?album_id=" + albumId + "'>Add Photo</a></div><br>");
+  var imageTag = "<img src='" + imageUrl + "'>";
+  $("#useralbumscontainer").html(albumInfo + "<div class='useralbum'><div class='album'>" + imageTag + "<div class='overlay'><ul><li><h3>" + albumName + "</h3></li><li>by " + userUsername + " just now</li></ul><ul class='inline'><li><a href='/albums/" + albumId + "'>Show</a></li><li><a href='/albums/" + albumId + "/edit'>Edit</a></li><li><a href='/albums/" + albumId + "' data-confirm='Are you sure?' data-method='delete' rel='nofollow'>Destroy</a></li><li><a href='/photos/new?album_id=" + albumId + "'>Add Photo</a></li></ul></div></div>");
   $(".notice").html(albumName + " has been added.");
   $(".notice").slideDown("fast").delay(5000).slideUp("fast");
 }
