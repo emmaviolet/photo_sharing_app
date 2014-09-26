@@ -5,19 +5,20 @@
 
     <div><%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %></div>
-
+<br>
     <div><%= f.label :username %><br />
     <%= f.text_field :username, autofocus: true %></div>
-
+<br>
     <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
       <%= f.password_field :password, autocomplete: "off" %></div>
-
+<br>
     <div><%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
-
-    <div><%= f.label :profile_photo %><br />
+<br>
+    <div><%= f.label :profile_photo %><br /></div>
+    <div class="photo_file_field">
       <%= f.file_field :profile_photo %></div>
-
+<br>
     <div><%= f.submit "Sign up" %></div>
   <% end %>
 </div>
