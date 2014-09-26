@@ -14,7 +14,7 @@
         = link_to 'Remove Photo', @photo, method: :delete, data: { confirm: 'Are you sure?' }
 
   .show_pic
-    = link_to image_tag(@photo.photo_file.detail.url), @photo.photo_file.detail.url
+    = link_to image_tag(@photo.photo_file.display.url), @photo.photo_file.display.url
 
   %div
     %p.rating

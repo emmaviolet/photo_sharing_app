@@ -2,7 +2,7 @@
 %h1#user_username=@user.username
 
 .user_show_div
-  = image_tag @user.profile_photo.url
+  = image_tag @user.profile_photo.detail.url
   %br
 
   -if @user == current_user
