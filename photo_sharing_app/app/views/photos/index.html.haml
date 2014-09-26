@@ -1,23 +1,25 @@
 %h1 Most popular photos
 
 - @photos.each do |photo|
-  %p
-    = link_to photo.name, photo
-  %p 
-    Rating:
-    = photo.reputation_for(:votes).to_i
+  .popular_photo_div
+    %h2
+      = link_to photo.name, photo
+    %p 
+      Rating:
+      = photo.reputation_for(:votes).to_i
 
-  .popular 
-    = link_to photo do
-      = image_tag(photo.photo_file.detail.url)
+    .popular 
+      = link_to photo do
+        = image_tag(photo.photo_file.detail.url)
 
-  %p
-    Uploaded by the lovely
-    = link_to photo.album.user.username, photo.album.user if photo.album && photo.album.user
-    to the lovely album
-    = link_to photo.album.name, photo.album if photo.album
-  %p   
-  
-  %br
-= paginate @photos
+    %p
+      Uploaded by the lovely
+      = link_to photo.album.user.username, photo.album.user if photo.album && photo.album.user
+      to the lovely album
+      = link_to photo.album.name, photo.album if photo.album
+    %p   
+    
+    %br
+.photo_pagination
+  = paginate @photos
 

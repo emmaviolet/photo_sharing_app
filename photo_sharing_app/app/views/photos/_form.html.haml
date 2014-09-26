@@ -1,39 +1,52 @@
-= form_for(@photo) do |f|
-  - if @photo.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@photo.errors.count, "error")
-        prohibited this photo from being saved:
-      %ul
-        - @photo.errors.full_messages.each do |msg|
-          %li= msg
-  -if @photo.album_id
-    = f.hidden_field :album_id, :value => @photo.album_id
-  -else
+.new_form
+  = form_for(@photo) do |f|
+    - if @photo.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@photo.errors.count, "error")
+          prohibited this photo from being saved:
+        %ul
+          - @photo.errors.full_messages.each do |msg|
+            %li= msg
+    -if @photo.album_id
+      = f.hidden_field :album_id, :value => @photo.album_id
+    -else
+      .field
+        = f.label :album_id
+        %br/
+        = f.collection_select :album_id, Album.find_all_by_user_id(current_user.id), :id, :name
+        %br
+        %br
     .field
-      = f.label :album_id
+      = f.label :name
       %br/
-      = f.collection_select :album_id, Album.find_all_by_user_id(current_user.id), :id, :name
-  .field
-    = f.label :name
-    %br/
-    = f.text_field :name
-  .field
-    = f.label :description
-    %br/
-    = f.text_field :description
-  .field
-    = f.label :tags
-    %br/
-    = f.text_field :tags
-  .field
-    = f.label :photo_file
-    %br/
-    = f.file_field :photo_file
-  .field
-    = f.label :remote_photo_file_url
-    %br/
-    = f.text_field :remote_photo_file_url
-  .actions
-    = f.button :submit, name: "subaction", value: false
-    = f.button :'add another', name: "subaction", value: true
+      = f.text_field :name
+      %br
+      %br
+    .field
+      = f.label :description
+      %br/
+      = f.text_field :description
+      %br
+      %br
+    .field
+      = f.label :tags
+      %br/
+      = f.text_field :tags
+      %br
+      %br
+    .field
+      = f.label :photo_file
+      %br/
+      .photo_file_field
+        = f.file_field :photo_file
+      %br
+    .field
+      = f.label :remote_photo_file_url
+      %br/
+      = f.text_field :remote_photo_file_url
+      %br
+      %br
+    .actions
+      = f.button :submit, name: "subaction", value: false
+      = f.button :'add another', name: "subaction", value: true

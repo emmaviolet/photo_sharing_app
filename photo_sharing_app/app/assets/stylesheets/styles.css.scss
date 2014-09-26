@@ -172,6 +172,7 @@ td image {
   box-sizing: border-box;
   position: relative;
   margin: 10px;
+  border-radius: 30px;
 
   .overlay {
     background: rgba(0,0,0,0.7);
@@ -290,3 +291,64 @@ div.description {
   clear: both;
 }
 
+.search_container {
+  display: inline-block;
+  text-align: center;
+  width: 150px;
+  margin: auto;
+  margin-bottom: 30px;
+  vertical-align: top;
+}
+
+
+img {
+  border-radius: 30px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.popular_photo_div {
+  display: block;
+  text-align: center;
+}
+
+.photo_pagination {
+  display: block;
+  text-align: center;
+}
+
+.bottom_nav {
+  text-align: center;
+}
+
+.new_form {
+  display: block;
+  text-align: center;
+}
+
+.photo_file_field {
+  padding-left: 120px;
+}
+
+.user_show_div {
+  display: block;
+  text-align: center;
+}
+
+#useralbumscontainer {
+  display: inline-block;
+  text-align: center;
+}
+
+.description {
+  display: block;
+  text-align: center;
+}
+
+.album_links {
+  display: block;
+  // width: 500px;
+  text-align: center;
+}

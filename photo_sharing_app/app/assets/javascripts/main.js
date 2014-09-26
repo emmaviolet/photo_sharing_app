@@ -45,6 +45,7 @@ function submitUserInfo() {
   var userPassword = $('#password').val();
   var userPasswordConfirmation = $('#passwordconfirmation').val();
   var userId = $('#user_id').val();
+  var userPhoto = $('#profilephoto').val();
 
   $.ajax({
     url: "/users/"+userId+".json",

@@ -1,7 +1,13 @@
--if @photo.album_id
-  %h1
-    ="#{Album.find(@photo.album_id).name}: New photo"
+-if current_user.albums.any?
+  -if @photo.album_id
+    %h1
+      ="#{Album.find(@photo.album_id).name}: New photo"
+  -else
+    %h1 New photo
+  = render 'form'
 -else
-  %h1 New photo
-= render 'form'
-= link_to 'Back', photos_path
+  %h1
+    Sorry, you must add an album before you can start uploading photos!
+    %br
+    %br
+    = link_to "Add album", new_album_path

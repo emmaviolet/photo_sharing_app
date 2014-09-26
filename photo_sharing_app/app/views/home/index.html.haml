@@ -3,23 +3,28 @@
     %h1 USERS
     %br
       - @users.each do |user|
-        = link_to user.username, user
+        .search_container
+          = link_to user.username, user
+          %br
+          = link_to(image_tag(user.profile_photo.thumb.url), user)
   - if @albums.any?
     %h1 ALBUMS
     %br
       - @albums.each do |album|
-        = link_to album.name, album
-        = link_to image_tag(Photo.find(album.cover_photo_id).photo_file.url), album
-        %br
+        .search_container
+          = link_to album.name, album
+          %br
+          = link_to image_tag(Photo.unscoped.find(album.cover_photo_id).photo_file.thumb.url), album
   - if @photos.any?
     %h1 PHOTOS
     %br
       - @photos.each do |photo|
-        = link_to photo.name, photo
-        %p
-          Rating:
-          = photo.reputation_for(:votes).to_i
-        = link_to image_tag(photo.photo_file.thumb.url), photo
-        %br
+        .search_container
+          = link_to photo.name, photo
+          = "(#{photo.reputation_for(:votes).to_i})"
+          %br
+          = photo.tags
+          %br
+          = link_to image_tag(photo.photo_file.thumb.url), photo
   - if @photos.empty? && @albums.empty? && @users.empty?
     Sorry, we don't have any records that match your search query.

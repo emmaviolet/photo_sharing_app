@@ -1,42 +1,43 @@
 
 %h1#user_username=@user.username
 
-= image_tag @user.profile_photo.url
-%br
-
--if @user == current_user
-  %button#usereditinfobutton Edit Info
-  %div#usereditinfo{:style=>"display:none;"}
-    %input#user_id{:value => @user.id, :type => "hidden"}
-    %p Email:
-    %input#email{:value => @user.email, :type => "text"}
-    %p Username:
-    %input#username{:value => @user.username, :type => "text"}
-    %p Password:
-    %input#password{:value => @user.password, :type => "password"}
-    %p Password confirmation:
-    %input#passwordconfirmation{:value => @user.password_confirmation, :type => "password"}
-    %br
-    %input#usereditsubmit{:type => "button", :value => "Submit"}
-
-%h2 Albums
-
-%div#useralbumscontainer
-  -if @user.albums.empty?
-    -if @user == current_user
-      You have no albums!
-    -else
-      = @user.username
-      has no albums!
+.user_show_div
+  = image_tag @user.profile_photo.url
   %br
-  %br
+
   -if @user == current_user
-    #newalbum
-      = render 'newalbum'
-  %br
-  -unless @user.albums.empty?
-    %div#useralbums
-      = render @user.albums
+    %button#usereditinfobutton Edit Info
+    %div#usereditinfo{:style=>"display:none;"}
+      %input#user_id{:value => @user.id, :type => "hidden"}
+      %p Email:
+      %input#email{:value => @user.email, :type => "text"}
+      %p Username:
+      %input#username{:value => @user.username, :type => "text"}
+      %p Password:
+      %input#password{:value => @user.password, :type => "password"}
+      %p Password confirmation:
+      %input#passwordconfirmation{:value => @user.password_confirmation, :type => "password"}
+      %br
+      %input#usereditsubmit{:type => "button", :value => "Submit"}
+
+  %h2 Albums
+
+  %div#useralbumscontainer
+    -if @user.albums.empty?
+      -if @user == current_user
+        You have no albums!
+      -else
+        = @user.username
+        has no albums!
+    %br
+    %br
+    -if @user == current_user
+      #newalbum
+        = render 'newalbum'
+    %br
+    -unless @user.albums.empty?
+      %div#useralbums
+        = render @user.albums
 
   
 
