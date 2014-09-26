@@ -11,7 +11,7 @@
     %ul.inline
     
       %li= link_to 'Show', album
-      - if album.user_id == current_user.id
+      - if album.user_id == current_user.try(:id)
         %li= link_to 'Edit', edit_album_path(album)
         %li= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' }
         %li= link_to 'Add Photo', new_photo_path(album_id: album.id)
