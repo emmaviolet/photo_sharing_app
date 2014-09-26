@@ -26,6 +26,8 @@
     -if @user.albums.empty?
       -if @user == current_user
         You have no albums!
+        %div#useralbums
+          = render @user.albums
       -else
         = @user.username
         has no albums!

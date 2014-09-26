@@ -79,7 +79,7 @@ class AlbumsController < ApplicationController
     @album.destroy
 
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Album was deleted.' }
+      format.html { redirect_to current_user, notice: 'Album was deleted.' }
       format.json { head :no_content }
     end
   end
