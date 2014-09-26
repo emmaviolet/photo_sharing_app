@@ -1,7 +1,7 @@
 class Album < ActiveRecord::Base
   attr_accessible :cover_photo_id, :description, :name, :user_id
 
-  has_many :photos
+  has_many :photos, dependent: :destroy
 
   belongs_to :user
 

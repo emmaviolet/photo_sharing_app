@@ -40,6 +40,9 @@ header {
           color: $light-font;
           font-size: 15px;
           letter-spacing: 1px;
+          &:visited {
+          color: $light-font;
+          }
         } 
       }
     } 

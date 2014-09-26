@@ -2,7 +2,7 @@ class Photo < ActiveRecord::Base
   attr_accessible :album_id, :description, :name, :photo_file, :remote_photo_file_url, :tags
   mount_uploader :photo_file, PhotoFileUploader
   has_many :ratings
-  has_many :comments
+  has_many :comments, dependent: :destroy
   belongs_to :album
 
   has_reputation :votes, source: :user, aggregated_by: :sum

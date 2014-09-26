@@ -9,8 +9,9 @@ class User < ActiveRecord::Base
   mount_uploader :profile_photo, PhotoFileUploader
   # attr_accessible :title, :body
 
-  has_many :albums
+  has_many :albums, dependent: :destroy
   has_many :photos, through: :albums
+  has_many :comments, dependent: :destroy
 
   has_many :evaluations, class_name: "ReputationSystem", as: :source
 
