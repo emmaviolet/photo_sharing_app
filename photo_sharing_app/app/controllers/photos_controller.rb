@@ -6,7 +6,7 @@ class PhotosController < ApplicationController
   # GET /photos.json
   def index
     @photos = Photo.find_with_reputation(:votes, :all, order: 'votes desc')
-    @photos = Kaminari.paginate_array(@photos).page(params[:page])
+    @photos = Kaminari.paginate_array(@photos).page(params[:page]).per(4)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -48,7 +48,7 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        unless params[:subaction]
+        if params[:subaction] == "false"
           format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
           format.json { render json: @photo, status: :created, location: @photo }
         else

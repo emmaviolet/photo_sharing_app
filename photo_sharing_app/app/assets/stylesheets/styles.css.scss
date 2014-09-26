@@ -28,6 +28,7 @@ header {
         padding: 0px 110px 0px 0px;
         font-size: 15px;
         font-weight: bold;
+        vertical-align: top;
         input {
           margin-left: 20px;
         }
@@ -118,37 +119,35 @@ td image {
   clear: both;
 }
 
-#hidden_login0 {
+.hidden_login {
   display: inline-block;
   text-align: center;
   position: absolute;
-  background-color: $orange;
-  height: 100px;
+  height: 50px;
+  padding-top: 10px;
+  border-radius: 30px;
   width: 100px;
+}
+
+.hidden_login li {
+  width: 100px;
+  margin-left: -20px;
+}
+
+#hidden_login0 {
+  background-color: $orange;
 }
 
 #hidden_login1 {
-  display: inline-block;
-  position: absolute;
   background-color: $orange;
-  height: 100px;
-  width: 100px;
 }
 
 #hidden_login2 {
-  display: inline-block;
-  position: absolute;
   background-color: $gray-nav;
-  height: 100px;
-  width: 100px;
 }
 
 #hidden_login3 {
-  display: inline-block;
-  position: absolute;
   background-color: $notice;
-  height: 100px;
-  width: 100px;
 }
 
 #search_input {
@@ -310,7 +309,8 @@ h1 {
 }
 
 .popular_photo_div {
-  display: block;
+  display: inline-block;
+  width: 48%;
   text-align: center;
 }
 
