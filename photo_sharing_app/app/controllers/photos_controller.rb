@@ -90,11 +90,15 @@ class PhotosController < ApplicationController
   end
 
   def vote
+    @photo = Photo.find(params[:id])
+    reputation = @photo.reputation_for(:votes).to_i 
     value = params[:type] == "up" ? 1 : -1
-      @photo = Photo.find(params[:id])
-      @photo.add_or_update_evaluation(:votes, value, current_user)
+    @photo.add_or_update_evaluation(:votes, value, current_user)
+    if @photo.reputation_for(:votes).to_i != reputation
       redirect_to :back, notice: "Thank you for sharing your opinion on this lovely photo."
-      
+    else
+      redirect_to :back, notice: "You have already voted that way. No more!"
+    end
   end 
 
 end
