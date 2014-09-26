@@ -8,6 +8,10 @@ body {
 
 a {
   text-decoration: none;
+  color: $orange;
+  &:visited {
+  color: $red-heading;
+  }
 }
 
 li {
@@ -317,7 +321,8 @@ h1 {
 
 .photo_pagination {
   display: block;
-  text-align: left;
+  text-align: center;
+  clear: both;
 }
 
 .bottom_nav {
@@ -357,4 +362,8 @@ h1 {
 .bottom_links {
   display: block;
   text-align: center;
+}
+
+.album img {
+  width: 100%;
 }
